@@ -39,4 +39,14 @@ export class ClientService {
   getClients(): Observable<Client[]> {
     return this.http.get<Client[]>(this.API_URL, httpOptions);
   }
+
+  /** GET single client from the server */
+  findClient(id: number): Observable<Client> {
+    return this.http.get<Client>(this.API_URL + id, httpOptions);
+  }
+
+  /** POST client to the server */
+  addClient(id: number, client): Observable<Client> {
+    return this.http.post<Client>(this.API_URL + id, client, httpOptions);
+  }
 }
