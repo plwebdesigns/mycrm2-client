@@ -1,3 +1,20 @@
-<p>
-  clients works!
-</p>
+<table class="table">
+  <thead>
+    <th>ID</th>
+    <th>FIRST NAME</th>
+    <th>LAST NAME</th>
+    <th>CITY</th>
+    <th>STATE</th>
+    <th>DOB</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let client of clients">
+    <td><a routerLink="/clients/{{client.id}}">{{client.id}}</a> </td>
+    <td><a routerLink="/clients/{{client.id}}">{{client.first_name}}</a></td>
+    <td><a routerLink="/clients/{{client.id}}">{{client.last_name}}</a></td>
+    <td>{{client.city}}</td>
+    <td>{{client.state}}</td>
+    <td>{{client.dob}}</td>
+  </tr>
+  </tbody>
+</table>
