@@ -53,8 +53,8 @@
             <table class="table">
               <tr>
                 <td>
-                  <button type="submit" class="button is-link is-danger" style="margin-right: 5px">Update</button>
-                  <button class="button is-link is-danger" routerLink="/">Back to clients</button>
+                  <button type="submit" class="button is-link is-inverted" style="margin-right: 5px">Update</button>
+                  <button class="button is-link is-inverted" routerLink="/">Back to clients</button>
                 </td>
               </tr>
             </table>
@@ -88,7 +88,7 @@
               </tr>
               <tr>
                 <td>
-                  <input type="text" class="input" name="id" [(ngModel)]="client.id">
+                  <input type="hidden" class="input" name="id" [(ngModel)]="client.id">
                 </td>
               </tr>
             </table>

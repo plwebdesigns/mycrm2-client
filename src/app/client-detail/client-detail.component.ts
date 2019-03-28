@@ -31,8 +31,9 @@ export class ClientDetailComponent implements OnInit {
   updateClient(client) {
     const id = +this.route.snapshot.paramMap.get('id');
     this.clientService.updateClient(id, client)
-        .subscribe((cx: any) => { client = cx; });
-    console.warn(client);
+        .subscribe((cx: any) => { client = cx; },
+            err => console.log('Observer error: ' + err),
+            () => alert('Client with ID ' + id + ' updated'));
   }
 
 }

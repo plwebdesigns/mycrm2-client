@@ -14,6 +14,7 @@ export class ClientsComponent implements OnInit {
 
   ngOnInit() {
     this.getClients();
+
   }
 
   getClients() {

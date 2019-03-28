@@ -1,0 +1,7 @@
+.table thead {
+    background-color: #4FC4A6;
+    border-radius: 10px;
+}
+.table th {
+    color: white;
+}

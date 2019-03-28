@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import {Client, ClientService} from "../client.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {error} from "util";
 
 @Component({
   selector: 'app-client-add',
@@ -38,8 +39,9 @@ export class ClientAddComponent implements OnInit {
   addClient(client) {
     client = this.clientForm.value;
     this.clientService.addClient(client)
-        .subscribe((cx: any) => { this.client = cx});
-    console.warn(client);
+        .subscribe((cx: any) => { this.client = cx},
+                err => console.log('Observer error: ' + err),
+            () => alert('Client added'));
   }
 
 }
