@@ -1,5 +1,101 @@
 <div *ngIf="client">
-
-  <h2 class="title is-2">{{client.last_name}}, {{client.first_name}}</h2>
+  
+  <form #clientForm="ngForm" (ngSubmit)="updateClient(clientForm.value)">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child notification is-primary">
+            <h1 class="title is-2 has-text-centered">{{client.first_name}} {{client.last_name}}</h1>
+            <table class="table is-narrow">
+              <tr>
+                <td>First Name:
+                  <input type="text" class="input" name="first_name" [(ngModel)]="client.first_name">
+                </td>
+                <td>Last Name:
+                  <input type="text" class="input" name="last_name" [(ngModel)]="client.last_name">
+                </td>
+                <td>Status:
+                  <input type="text" class="input" name="status" [(ngModel)]="client.status">
+                </td>
+              </tr>
+            </table>
+            <table class="table is-narrow">
+              <tr>
+                <td>Address:
+                  <input type="text" class="input" name="address_1" [(ngModel)]="client.address_1">
+                </td>
+                <td>Address 2:
+                  <input type="text" class="input" name="address_2" [(ngModel)]="client.address_2">
+                </td>
+              </tr>
+            </table>
+            <table class="table is-narrow">
+              <tr>
+                <td>City:
+                  <input type="text" class="input" name="city" [(ngModel)]="client.city">
+                </td>
+                <td>State:
+                  <input type="text" class="input" name="state" [(ngModel)]="client.state">
+                </td>
+                <td>Zipcode:
+                  <input type="text" class="input" name="zipcode" [(ngModel)]="client.zipcode">
+                </td>
+              </tr>
+            </table>
+            <table class="table">
+              <tr>
+                <td>Notes:
+                  <textarea class="textarea" cols="50" rows="5" name="notes" [(ngModel)]="client.notes"></textarea>
+                </td>
+              </tr>
+            </table>
+            <table class="table">
+              <tr>
+                <td>
+                  <button type="submit" class="button is-link is-danger" style="margin-right: 5px">Update</button>
+                  <button class="button is-link is-danger" routerLink="/">Back to clients</button>
+                </td>
+              </tr>
+            </table>
+          </article>
+        </div>
+      </div>
+      <div class="tile is-vertical is-4">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child notification is-info">
+            <h1 class="title is-3 has-text-centered">Personal Info</h1>
+            <table class="table is-narrow" style="background-color: #4D9BEE;">
+              <tr>
+                <td>Phone 1:
+                  <input type="text" class="input" name="phone_1" [(ngModel)]="client.phone_1">
+                </td>
+              </tr>
+              <tr>
+                <td>Phone 2:
+                  <input type="text" class="input" name="phone_2" [(ngModel)]="client.phone_2">
+                </td>
+              </tr>
+              <tr>
+                <td>Date of Birth:
+                  <input type="text" class="input" name="dob" [(ngModel)]="client.dob">
+                </td>
+              </tr>
+              <tr>
+                <td>Social Security:
+                  <input type="text" class="input" name="ssn" [(ngModel)]="client.ssn">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type="text" class="input" name="id" [(ngModel)]="client.id">
+                </td>
+              </tr>
+            </table>
+          </article>
+        </div>
+      </div>
+    </div>
+  </form>
 
 </div>

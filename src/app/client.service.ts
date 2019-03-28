@@ -22,6 +22,9 @@ export interface Client {
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
+const myHeaders = {
+  headers: new HttpHeaders({'X-HTTP-Method-Override': 'PUT'})
+};
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +49,12 @@ export class ClientService {
   }
 
   /** POST client to the server */
-  addClient(id: number, client): Observable<Client> {
-    return this.http.post<Client>(this.API_URL + id, client, httpOptions);
+  addClient(client): Observable<Client> {
+    return this.http.post<Client>(this.API_URL, client);
+  }
+
+  /** PUT(update) client to server */
+  updateClient(id: number, client): Observable<Client> {
+    return this.http.post<Client>(this.API_URL + id, client, myHeaders);
   }
 }

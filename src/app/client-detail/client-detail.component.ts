@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, Output, OnInit} from '@angular/core';
 import {Client, ClientService} from "../client.service";
-import { ActivatedRoute, Route } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+
 
 @Component({
   selector: 'app-client-detail',
@@ -10,6 +11,7 @@ import { ActivatedRoute, Route } from "@angular/router";
 export class ClientDetailComponent implements OnInit {
 
   @Input() client: Client;
+  @Output() newClient: Client;
 
   constructor(
       private clientService: ClientService,
@@ -24,6 +26,13 @@ export class ClientDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.clientService.findClient(id)
         .subscribe((client: any) => { this.client = client.data; });
+  }
+
+  updateClient(client) {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.clientService.updateClient(id, client)
+        .subscribe((cx: any) => { client = cx; });
+    console.warn(client);
   }
 
 }

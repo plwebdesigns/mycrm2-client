@@ -1,3 +1,92 @@
-<p>
-  client-add works!
-</p>
+<form [formGroup]="clientForm" (ngSubmit)="addClient(clientForm.value)">
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-8">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-primary">
+        <h1 class="title is-2 has-text-centered">Add New Client</h1>
+        <table class="table is-narrow">
+          <tr>
+            <td>First Name:
+              <input type="text" class="input" formControlName="first_name">
+            </td>
+            <td>Last Name:
+              <input type="text" class="input" formControlName="last_name">
+            </td>
+            <td>Status:
+              <input type="text" class="input" formControlName="status">
+            </td>
+          </tr>
+        </table>
+        <table class="table is-narrow">
+          <tr>
+            <td>Address:
+              <input type="text" class="input" formControlName="address_1">
+            </td>
+            <td>Address 2:
+              <input type="text" class="input" formControlName="address_2">
+            </td>
+          </tr>
+        </table>
+        <table class="table is-narrow">
+          <tr>
+            <td>City:
+              <input type="text" class="input" formControlName="city">
+            </td>
+            <td>State:
+              <input type="text" class="input" formControlName="state">
+            </td>
+            <td>Zipcode:
+              <input type="text" class="input" formControlName="zipcode">
+            </td>
+          </tr>
+        </table>
+          <table class="table">
+            <tr>
+              <td>Notes:
+                  <textarea class="textarea" cols="50" rows="5" formControlName="notes"></textarea>
+              </td>
+            </tr>
+          </table>
+          <table class="table">
+            <tr>
+              <td>
+                <button type="submit" class="button is-link is-danger" style="margin-right: 5px">Add Client</button>
+                <button class="button is-link is-danger" routerLink="/">Cancel</button>
+              </td>
+            </tr>
+          </table>
+        </article>
+      </div>
+    </div>
+    <div class="tile is-vertical is-4">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-info">
+          <h1 class="title is-3 has-text-centered">Personal Info</h1>
+          <table class="table is-narrow" style="background-color: #4D9BEE;">
+            <tr>
+              <td>Phone 1:
+                <input type="text" class="input" formControlName="phone_1">
+              </td>
+            </tr>
+            <tr>
+              <td>Phone 2:
+                <input type="text" class="input" formControlName="phone_2">
+              </td>
+            </tr>
+            <tr>
+              <td>Date of Birth:
+                <input type="text" class="input" formControlName="dob">
+              </td>
+            </tr>
+            <tr>
+              <td>Social Security:
+                <input type="text" class="input" formControlName="ssn">
+              </td>
+            </tr>
+          </table>
+        </article>
+      </div>
+    </div>
+  </div>
+</form>
+
