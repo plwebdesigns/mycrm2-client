@@ -6,37 +6,46 @@
       <div class="tile is-vertical is-8">
         <div class="tile is-parent is-vertical">
           <article class="tile is-child notification is-primary">
-            <h1 class="title is-2 has-text-centered">{{client.first_name}} {{client.last_name}}</h1>
+            <h1 class="title is-2 has-text-centered">
+              {{client.first_name | uppercase}} {{client.last_name | uppercase}}
+            </h1>
             <table class="table is-narrow">
               <tr>
                 <td>First Name:
-                  <input type="text" class="input" name="first_name" [(ngModel)]="client.first_name">
+                  <input type="text" class="input" name="first_name"
+                         [ngModel]="client.first_name | uppercase" (ngModelChange)="client.first_name=$event">
                 </td>
                 <td>Last Name:
-                  <input type="text" class="input" name="last_name" [(ngModel)]="client.last_name">
+                  <input type="text" class="input" name="last_name" [ngModel]="client.last_name | uppercase"
+                         (ngModelChange)="client.last_name=$event">
                 </td>
                 <td>Status:
-                  <input type="text" class="input" name="status" [(ngModel)]="client.status">
+                  <input type="text" class="input" name="status" [ngModel]="client.status | uppercase"
+                         (ngModelChange)="client.status=$event">
                 </td>
               </tr>
             </table>
             <table class="table is-narrow">
               <tr>
                 <td>Address:
-                  <input type="text" class="input" name="address_1" [(ngModel)]="client.address_1">
+                  <input type="text" class="input" name="address_1" [ngModel]="client.address_1 | uppercase"
+                         (ngModelChange)="client.address_1=$event">
                 </td>
                 <td>Address 2:
-                  <input type="text" class="input" name="address_2" [(ngModel)]="client.address_2">
+                  <input type="text" class="input" name="address_2" [ngModel]="client.address_2 | uppercase"
+                         (ngModelChange)="client.address_2=$event">
                 </td>
               </tr>
             </table>
             <table class="table is-narrow">
               <tr>
                 <td>City:
-                  <input type="text" class="input" name="city" [(ngModel)]="client.city">
+                  <input type="text" class="input" name="city" [ngModel]="client.city | uppercase"
+                         (ngModelChange)="client.city=$event">
                 </td>
                 <td>State:
-                  <input type="text" class="input" name="state" [(ngModel)]="client.state">
+                  <input type="text" class="input" name="state" [ngModel]="client.state | uppercase"
+                         (ngModelChange)="client.state=$event">
                 </td>
                 <td>Zipcode:
                   <input type="text" class="input" name="zipcode" [(ngModel)]="client.zipcode">

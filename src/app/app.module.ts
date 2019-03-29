@@ -9,12 +9,13 @@ import { ClientsComponent } from './clients/clients.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { ClientAddComponent } from './client-add/client-add.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     ClientsComponent,
     ClientDetailComponent,
-    ClientAddComponent
+    ClientAddComponent,
   ],
   imports: [
     BrowserModule,

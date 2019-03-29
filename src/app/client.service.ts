@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 export interface Client {
@@ -40,6 +40,11 @@ export class ClientService {
 
   /** GET clients from the server */
   getClients(): Observable<Client[]> {
+    return this.http.get<Client[]>(this.API_URL, httpOptions);
+  }
+
+  searchClient(term): Observable<Client[]> {
+
     return this.http.get<Client[]>(this.API_URL, httpOptions);
   }
 
