@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Client, ClientService } from "../client.service";
-import { Subject } from "rxjs";
-import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
+import {headersToString} from "selenium-webdriver/http";
+
+
 
 @Component({
   selector: 'app-clients',
@@ -11,6 +12,7 @@ import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
 export class ClientsComponent implements OnInit {
 
   clients: Client[];
+
 
   constructor(private clientService: ClientService) { }
 
@@ -22,6 +24,11 @@ export class ClientsComponent implements OnInit {
   getClients() {
     this.clientService.getClients()
         .subscribe((clients: any) => { this.clients  = clients.data } )
+  }
+
+  searchClients(term: string) {
+    this.clientService.searchClient(term)
+        .subscribe((clients: any) => { this.clients = clients.data });
   }
 
 }

@@ -19,12 +19,20 @@ export interface Client {
   notes: string;
 }
 
+export interface Search {
+  term: string;
+}
+
+
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({'Content-Type': 'application/json'}),
+  params: new HttpParams()
 };
 const myHeaders = {
   headers: new HttpHeaders({'X-HTTP-Method-Override': 'PUT'})
 };
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -43,9 +51,9 @@ export class ClientService {
     return this.http.get<Client[]>(this.API_URL, httpOptions);
   }
 
-  searchClient(term): Observable<Client[]> {
-
-    return this.http.get<Client[]>(this.API_URL, httpOptions);
+  searchClient(term: string): Observable<Client[]> {
+    // httpOptions.params.append('search', term);
+    return this.http.get<Client[]>(this.API_URL + 'search/?search=' + term.toUpperCase(), httpOptions);
   }
 
   /** GET single client from the server */
