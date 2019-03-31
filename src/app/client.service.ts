@@ -17,11 +17,22 @@ export interface Client {
   dob: string;
   ssn: string;
   notes: string;
+  deal_id: [{
+    id: number;
+    client_id: number;
+    status: string;
+    amt_client_recvd: number;
+    profit: number;
+    notes: string;
+    created_at: string;
+    updated_at: string;
+    payments_purchased: number;
+    payments_remaining: number;
+    sales_person: string;
+  }];
 }
 
-export interface Search {
-  term: string;
-}
+
 
 
 const httpOptions = {
@@ -53,7 +64,8 @@ export class ClientService {
 
   searchClient(term: string): Observable<Client[]> {
     // httpOptions.params.append('search', term);
-    return this.http.get<Client[]>(this.API_URL + 'search/?search=' + term.toUpperCase(), httpOptions);
+    return this.http.get<Client[]>(
+        this.API_URL + 'search/?search=' + term.toUpperCase(), httpOptions);
   }
 
   /** GET single client from the server */

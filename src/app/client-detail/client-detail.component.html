@@ -5,7 +5,7 @@
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-8">
         <div class="tile is-parent is-vertical">
-          <article class="tile is-child notification is-primary">
+          <article class="tile is-child notification is-info">
             <h1 class="title is-2 has-text-centered">
               {{client.first_name | uppercase}} {{client.last_name | uppercase}}
             </h1>
@@ -74,7 +74,7 @@
         <div class="tile is-parent is-vertical">
           <article class="tile is-child notification is-info">
             <h1 class="title is-3 has-text-centered">Personal Info</h1>
-            <table class="table is-narrow" style="background-color: #4D9BEE;">
+            <table class="table is-narrow">
               <tr>
                 <td>Phone 1:
                   <input type="text" class="input" name="phone_1" [(ngModel)]="client.phone_1">
@@ -102,6 +102,33 @@
               </tr>
             </table>
           </article>
+        </div>
+      </div>
+    </div>
+    <div class="tile is-ancestor has-text-centered">
+      <div class="tile is-vertical is-8">
+        <div class="tile">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child notification is-info is-outlined">
+              <h2 class="title is-3">Deals for {{client.first_name}}</h2>
+              <table class="table">
+                <tr *ngFor="let deal of client.deal_id">
+                  <td>
+                    <strong>Deal ID:</strong>
+                    {{deal.id}}
+                  </td>
+                  <td>
+                    <strong>Amount:</strong>
+                    {{deal.amt_client_recvd}}
+                  </td>
+                  <td>
+                    <strong>Status:</strong>
+                    {{deal.status}}
+                  </td>
+                </tr>
+              </table>
+            </article>
+          </div>
         </div>
       </div>
     </div>
