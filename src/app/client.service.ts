@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 export interface Client {
@@ -36,12 +36,12 @@ export interface Client {
 
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'}),
-  params: new HttpParams()
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 const myHeaders = {
   headers: new HttpHeaders({'X-HTTP-Method-Override': 'PUT'})
 };
+
 
 
 
@@ -82,4 +82,5 @@ export class ClientService {
   updateClient(id: number, client): Observable<Client> {
     return this.http.post<Client>(this.API_URL + id, client, myHeaders);
   }
+
 }

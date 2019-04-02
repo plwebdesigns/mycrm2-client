@@ -30,8 +30,15 @@
     <td>{{client.ssn}}</td>
     <td>{{client.phone_1}}</td>
   </tr>
-  <tr>
-    <td></td>
-  </tr>
   </tbody>
+</table>
+<table class="table">
+  <tr>
+    <td>
+      <nav class="pagination is-right" role="navigation" aria-label="pagination">
+        <a class="pagination-previous" (click)="pageDown()">Previous</a>
+        <a class="pagination-next" (click)="pageUp()">Next page</a>
+      </nav>
+    </td>
+  </tr>
 </table>
