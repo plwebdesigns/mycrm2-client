@@ -19,6 +19,7 @@
     <th>DOB</th>
     <th>SSN</th>
     <th>PHONE 1</th>
+    <th>CREATED:</th>
   </thead>
   <tbody>
   <tr *ngFor="let client of clients">
@@ -29,6 +30,7 @@
     <td>{{client.dob}}</td>
     <td>{{client.ssn}}</td>
     <td>{{client.phone_1}}</td>
+    <td>{{client.created_at | date:'mediumDate' }}</td>
   </tr>
   </tbody>
 </table>
@@ -36,8 +38,8 @@
   <tr>
     <td>
       <nav class="pagination is-right" role="navigation" aria-label="pagination">
-        <a class="pagination-previous" (click)="pageDown()">Previous</a>
-        <a class="pagination-next" (click)="pageUp()">Next page</a>
+        <a class="pagination-previous" (click)="pageBack()">Previous</a>
+        <a class="pagination-next" (click)="pageForward()">Next page</a>
       </nav>
     </td>
   </tr>

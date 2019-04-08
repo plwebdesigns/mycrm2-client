@@ -5,4 +5,6 @@ a.panel-block {
 .panel-block {
 
 }
-
+.navbar.is-warning.my-nav {
+    height: 100px;
+}

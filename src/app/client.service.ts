@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {HttpClient, HttpHeaderResponse, HttpHeaders, HttpParams} from "@angular/common/http";
 import { Observable } from "rxjs";
+import {map} from "rxjs/operators";
+
 
 export interface Client {
   id: number;
@@ -17,6 +19,7 @@ export interface Client {
   dob: string;
   ssn: string;
   notes: string;
+  created_at: string;
   deal_id: [{
     id: number;
     client_id: number;
@@ -35,14 +38,13 @@ export interface Client {
 
 
 
-const httpOptions = {
+
+let httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 const myHeaders = {
-  headers: new HttpHeaders({'X-HTTP-Method-Override': 'PUT'})
+  headers: new HttpHeaders({'X-HTTP-Method-Override': 'PUT'}),
 };
-
-
 
 
 @Injectable({
@@ -55,17 +57,26 @@ export class ClientService {
 
   private API_URL = 'http://localhost:8000/api/clients/'; // URL to laravel API
 
+
+
   constructor(private http: HttpClient) { }
 
+
   /** GET clients from the server */
-  getClients(): Observable<Client[]> {
-    return this.http.get<Client[]>(this.API_URL, httpOptions);
+  getClients(page: string): Observable<Client[]> {
+    return this.http.get<Client[]>(page, httpOptions);
   }
 
   searchClient(term: string): Observable<Client[]> {
-    // httpOptions.params.append('search', term);
+    // httpOptions.headers = httpOptions.headers
+    //     .set('Authorization',
+    //         'Bearer Qzk948cHNoowptmxzs679SYDwGVgljwECl8EFFSUx9QnJu3hztXoUJ2LkmSw');
+
+    console.log(httpOptions);
     return this.http.get<Client[]>(
-        this.API_URL + 'search/?search=' + term.toUpperCase(), httpOptions);
+        this.API_URL
+        + 'search/?search='
+        + term.toUpperCase(), httpOptions);
   }
 
   /** GET single client from the server */
