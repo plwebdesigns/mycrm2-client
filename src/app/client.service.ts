@@ -68,10 +68,6 @@ export class ClientService {
   }
 
   searchClient(term: string): Observable<Client[]> {
-    // httpOptions.headers = httpOptions.headers
-    //     .set('Authorization',
-    //         'Bearer Qzk948cHNoowptmxzs679SYDwGVgljwECl8EFFSUx9QnJu3hztXoUJ2LkmSw');
-
     console.log(httpOptions);
     return this.http.get<Client[]>(
         this.API_URL

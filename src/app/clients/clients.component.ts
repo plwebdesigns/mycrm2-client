@@ -14,7 +14,7 @@ export class ClientsComponent implements OnInit {
 
   clients: Client[];
   links: [];
-  page: string = 'http://localhost:8000/api/clients?page=1';
+  page: string = 'http://localhost:8000/api/clients?page=1'; // Pagination variable
 
 
 
@@ -30,22 +30,23 @@ export class ClientsComponent implements OnInit {
     seq.subscribe((clients: any) => { this.clients  = clients.data });
     setTimeout(() => {seq.subscribe((lx: any) => {this.links = lx.links},
             err => console.log('Observer error: ' + err),
-        () => console.log(this.page))}, 500);
+        () => console.log(this.links))}, 100);
   }
 
   searchClients(term: string) {
-    this.clientService.searchClient(term)
-        .subscribe((clients: any) => { this.clients = clients.data });
+    const subscription = this.clientService.searchClient(term);
+    subscription
+        .subscribe((clients: any) => { this.clients = clients.data },
+                err => console.log(err));
   }
 
   pageForward() {
     this.page = this.links['next'];
     this.getClients();
-    alert('testing....1234');
   }
   pageBack() {
     this.page = this.links['prev'];
-    alert('testing....1234');
+    this.getClients();
   }
 
 }

@@ -2,3 +2,6 @@ table {
     background-color: #1E9DEE;
     color: white;
 }
+.table td, .table th {
+    border: none;
+}

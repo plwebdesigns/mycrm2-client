@@ -5,3 +5,6 @@
 .table th {
     color: white;
 }
+.table td, .table th {
+    border: none;
+}

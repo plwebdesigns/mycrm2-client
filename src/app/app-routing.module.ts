@@ -4,13 +4,15 @@ import { ClientsComponent } from "./clients/clients.component";
 import {ClientDetailComponent} from "./client-detail/client-detail.component";
 import {ClientAddComponent} from "./client-add/client-add.component";
 import {RegisterComponent} from "./register/register.component";
+import {LoginComponent} from "./login/login.component";
 
 
 const routes: Routes = [
   {path: '', component: ClientsComponent},
   {path: 'clients/:id', component: ClientDetailComponent},
   {path: 'client-add', component: ClientAddComponent},
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

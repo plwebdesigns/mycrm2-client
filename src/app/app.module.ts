@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule, FormsModule} from "@angular/forms";
+import {HttpInterceptor, HTTP_INTERCEPTORS} from "@angular/common/http";
+import {Token} from "./token.interceptor";
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +12,7 @@ import { ClientsComponent } from './clients/clients.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { ClientAddComponent } from './client-add/client-add.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -21,6 +24,7 @@ import { RegisterComponent } from './register/register.component';
     ClientDetailComponent,
     ClientAddComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ import { RegisterComponent } from './register/register.component';
       ReactiveFormsModule,
       FormsModule,
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: Token, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
