@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { ClientAddComponent } from './client-add/client-add.component';
-import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
 
@@ -23,7 +22,6 @@ import { LoginComponent } from './login/login.component';
     ClientsComponent,
     ClientDetailComponent,
     ClientAddComponent,
-    RegisterComponent,
     LoginComponent,
   ],
   imports: [
