@@ -10,7 +10,10 @@
 </div>
 
 <br>
-<table class="table">
+<div *ngIf="isLoading">
+  <h3 class="title is-3">Loading....</h3>
+</div>
+<table class="table" *ngIf="!isLoading">
   <thead>
     <th>ID</th>
     <th>FIRST NAME</th>

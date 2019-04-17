@@ -55,8 +55,7 @@ const myHeaders = {
 
 export class ClientService {
 
-  private API_URL = 'http://localhost:8000/api/clients/'; // URL to laravel API
-
+  private API_URL = 'http://my-crm2.herokuapp.com/api/clients/'; // URL to laravel API
 
 
   constructor(private http: HttpClient) { }
@@ -68,10 +67,9 @@ export class ClientService {
   }
 
   searchClient(term: string): Observable<Client[]> {
-    console.log(httpOptions);
     return this.http.get<Client[]>(
         this.API_URL
-        + 'search/?search='
+        + 'search?search='
         + term.toUpperCase(), httpOptions);
   }
 

@@ -14,8 +14,8 @@ export class ClientsComponent implements OnInit {
 
   clients: Client[];
   links: [];
-  page: string = 'http://localhost:8000/api/clients?page=1'; // Pagination variable
-
+  page: string = 'http://my-crm2.herokuapp.com/api/clients?page=1'; // Pagination variable
+  isLoading: boolean = true;
 
 
 
@@ -29,15 +29,14 @@ export class ClientsComponent implements OnInit {
     const seq = this.clientService.getClients(this.page);
     seq.subscribe((clients: any) => { this.clients  = clients.data });
     setTimeout(() => {seq.subscribe((lx: any) => {this.links = lx.links},
-            err => console.log('Observer error: ' + err),
-        () => console.log(this.links))}, 100);
+            err => { console.log('Observer error: ' + err); },
+        () => this.isLoading = false )}, 100);
   }
 
   searchClients(term: string) {
     const subscription = this.clientService.searchClient(term);
     subscription
-        .subscribe((clients: any) => { this.clients = clients.data },
-                err => console.log(err));
+        .subscribe((clients: any) => { this.clients = clients.data });
   }
 
   pageForward() {
