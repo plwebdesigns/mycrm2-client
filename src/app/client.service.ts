@@ -55,7 +55,7 @@ const myHeaders = {
 
 export class ClientService {
 
-  private API_URL = 'http://my-crm2.herokuapp.com/api/clients/'; // URL to laravel API
+  private API_URL = 'http://74.208.150.203/api/clients/'; // URL to laravel API
 
 
   constructor(private http: HttpClient) { }

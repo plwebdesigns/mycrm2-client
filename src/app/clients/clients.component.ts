@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Client, ClientService } from "../client.service";
-
-
-
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -19,7 +17,10 @@ export class ClientsComponent implements OnInit {
 
 
 
-  constructor(private clientService: ClientService) { }
+  constructor(
+      private clientService: ClientService,
+      private router: Router
+      ) { }
 
   ngOnInit() {
     this.getClients();
@@ -29,8 +30,8 @@ export class ClientsComponent implements OnInit {
     const seq = this.clientService.getClients(this.page);
     seq.subscribe((clients: any) => { this.clients  = clients.data });
     setTimeout(() => {seq.subscribe((lx: any) => {this.links = lx.links},
-            err => { console.log('Observer error: ' + err); },
-        () => this.isLoading = false )}, 100);
+        err => console.warn('Observer error from getClients() ' + err),
+        () => this.isLoading = false)}, 800);
   }
 
   searchClients(term: string) {
