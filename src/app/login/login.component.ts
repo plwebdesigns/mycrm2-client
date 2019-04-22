@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
         .subscribe((ux: any) => { this.user = ux });
     setTimeout(() => { subscription.subscribe((token: any) => { this.tk = token.token },
         err => console.log('Error ' + err))}, 500);
+    this.router.navigate(['/']);
   }
 
 }

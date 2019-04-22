@@ -10,6 +10,7 @@ import {
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/do';
 import {Router} from "@angular/router";
+import {parseCookieValue} from "@angular/common/src/cookie";
 
 
 
@@ -23,7 +24,7 @@ export class Token implements HttpInterceptor{
             if (sessionStorage.getItem('token')) {
                 const token = sessionStorage.getItem('token');
                 // Set authorization header to contain Bearer token
-                let headers = new HttpHeaders().set('token', token);
+                let headers = new HttpHeaders().set('Authorization', token);
                 headers = headers.append('Content-Type', 'Application/json');
 
                 // If post req is really PUT, add header
@@ -32,15 +33,15 @@ export class Token implements HttpInterceptor{
                 }
                 const customReq = req.clone({headers: headers});
 
-                console.warn(customReq.headers.get('Content-type'));
+                console.warn(customReq.headers.get('Authorization'));
                 return next.handle(customReq);
             }
             else {
                 return next.handle(req).do((event: HttpEvent<any>) => {
                         if (event instanceof HttpResponse) {
                             // Do something with the response
-                            if (event.headers.has('token')) {
-                                const token = event.headers.get('token');
+                            if (event.headers.has('Authorization')) {
+                                const token = event.headers.get('Authorization');
                                 console.warn(token);
                                 sessionStorage.setItem('token', token);
                             }

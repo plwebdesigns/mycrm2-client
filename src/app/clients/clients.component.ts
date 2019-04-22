@@ -12,7 +12,7 @@ export class ClientsComponent implements OnInit {
 
   clients: Client[];
   links: [];
-  page: string = 'http://my-crm2.herokuapp.com/api/clients?page=1'; // Pagination variable
+  page: string = 'http://74.208.150.203/api/clients?page=1'; // Pagination variable
   isLoading: boolean = true;
 
 
