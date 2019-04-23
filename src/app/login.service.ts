@@ -17,7 +17,7 @@ let httpOptions = {
 })
 export class LoginService {
 
-  private API_URL = 'http://74.208.150.203/api/users/login';
+  private API_URL = '74.208.150.203/api/users/login';
 
 
   constructor(private http: HttpClient) { }
