@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   tk: string;
 
+
   constructor(private loginService: LoginService,
               private fb: FormBuilder,
               private router: Router) { }
@@ -31,8 +32,8 @@ export class LoginComponent implements OnInit {
     subscription
         .subscribe((ux: any) => { this.user = ux });
     setTimeout(() => { subscription.subscribe((token: any) => { this.tk = token.token },
-        err => console.log('Error ' + err))}, 500);
-    this.router.navigate(['/']);
+        err => console.log('Error with login ' + err),
+        () => {this.router.navigate(['/']); })}, 500);
   }
 
 }

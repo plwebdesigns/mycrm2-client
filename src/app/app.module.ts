@@ -12,6 +12,7 @@ import { ClientsComponent } from './clients/clients.component';
 import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { ClientAddComponent } from './client-add/client-add.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -23,6 +24,7 @@ import { LoginComponent } from './login/login.component';
     ClientDetailComponent,
     ClientAddComponent,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

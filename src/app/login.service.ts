@@ -12,6 +12,7 @@ let httpOptions = {
   headers: new HttpHeaders(
       {'Content-Type': 'application/json'})};
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,4 +27,7 @@ export class LoginService {
   login(user): Observable<User> {
     return this.http.post<User>(this.API_URL, user, httpOptions);
   }
+
+
+
 }

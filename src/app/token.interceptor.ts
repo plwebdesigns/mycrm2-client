@@ -5,12 +5,12 @@ import {
     HttpRequest,
     HttpEvent,
     HttpHeaders,
-    HttpErrorResponse, HttpEventType, HttpResponse
+    HttpErrorResponse,
+    HttpResponse
 } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/do';
 import {Router} from "@angular/router";
-import {parseCookieValue} from "@angular/common/src/cookie";
 
 
 
@@ -24,7 +24,7 @@ export class Token implements HttpInterceptor{
             if (sessionStorage.getItem('token')) {
                 const token = sessionStorage.getItem('token');
                 // Set authorization header to contain Bearer token
-                let headers = new HttpHeaders().set('Authorization', token);
+                let headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
                 headers = headers.append('Content-Type', 'Application/json');
 
                 // If post req is really PUT, add header
@@ -48,6 +48,7 @@ export class Token implements HttpInterceptor{
 
 
                         }
+
                     },
                     (err: any) => {
                         if (err instanceof HttpErrorResponse) {

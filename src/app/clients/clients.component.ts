@@ -31,7 +31,7 @@ export class ClientsComponent implements OnInit {
     seq.subscribe((clients: any) => { this.clients  = clients.data });
     setTimeout(() => {seq.subscribe((lx: any) => {this.links = lx.links},
         err => console.warn('Observer error from getClients() ' + err),
-        () => this.isLoading = false)}, 800);
+        () => this.isLoading = false)}, 200);
   }
 
   searchClients(term: string) {
