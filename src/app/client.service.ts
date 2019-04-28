@@ -20,6 +20,7 @@ export interface Client {
   ssn: string;
   notes: string;
   created_at: string;
+  updated_at: string;
   deal_id: [{
     id: number;
     client_id: number;

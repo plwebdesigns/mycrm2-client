@@ -6,6 +6,11 @@ import {Observable} from "rxjs";
 export interface User {
   email: string;
   password: string;
+  confirm_password: string;
+  first_name: string;
+  last_name: string;
+  phone_1: string;
+
 }
 
 let httpOptions = {
@@ -28,6 +33,12 @@ export class LoginService {
     return this.http.post<User>(this.API_URL, user, httpOptions);
   }
 
-
+  signUp(user): Observable<User> {
+    return this.http.post<User>(
+        'https://longoapi.com/api/users/register',
+        user,
+        httpOptions
+    );
+  }
 
 }
