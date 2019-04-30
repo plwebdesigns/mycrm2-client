@@ -1,0 +1,13 @@
+.table td, .table th {
+    border: none;
+}
+table {
+    background-color: #01D0B2;
+    color: white;
+}
+.input.ng-valid {
+    border: 2px solid #42A948;
+}
+.input.ng-invalid {
+    border: solid 2px #a94442;
+}

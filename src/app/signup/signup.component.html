@@ -1,0 +1,73 @@
+<form [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm.value)">
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-8">
+      <div class="tile is-parent is-vertical">
+        <article class="tile is-child notification is-primary">
+          <h1 class="title is-2 has-text-centered">Sign Up Form</h1>
+          <p class="has-text-centered is-italic">Submit button will show once form is valid</p>
+          <table class="table">
+            <tbody>
+            <tr>
+              <td>
+                First Name:
+                <input type="text" class="input" formControlName="first_name" id="first_name">
+                <div class="has-text-danger" *ngIf="f.first_name.invalid">Field is required</div>
+              </td>
+              <td>
+                Last Name:
+                <input type="text" class="input" formControlName="last_name">
+                <div class="has-text-danger" *ngIf="f.last_name.invalid">Field is required</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Primary Phone:
+                <input type="tel" class="input" formControlName="phone_1">
+                <div class="has-text-danger" *ngIf="f.phone_1.invalid">Field is required</div>
+              </td>
+              <td>
+                Email:
+                <input type="email" class="input" formControlName="email">
+                <div class="has-text-danger" *ngIf="f.email.invalid">Field is required</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Password:
+                <input type="password" class="input" formControlName="password">
+                <div class="has-text-danger" *ngIf="f.password.invalid">Field is required</div>
+              </td>
+              <td>
+                Confirm Password:
+                <input type="password" class="input" formControlName="confirm_password">
+                <div class="has-text-danger" *ngIf="f.confirm_password.invalid">Field is required</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button class="button" type="submit" *ngIf="signUpForm.valid">Submit</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="modal" id="modal-success">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modal title</p>
+      <button class="delete" aria-label="close" (click)="closeModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <p>Thanks for registering!</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" (click)="closeModal()">Close</button>
+    </footer>
+  </div>
+</div>
