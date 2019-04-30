@@ -11,17 +11,19 @@ import {
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/do';
 import {Router} from "@angular/router";
+import {LoginService} from "./login.service";
 
 
 
 @Injectable()
 export class Token implements HttpInterceptor{
 
-    constructor(private router: Router){}
+    constructor(private router: Router, private loginServ: LoginService){}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
             if (sessionStorage.getItem('token')) {
+                this.loginServ.isAuth = true;
                 const token = sessionStorage.getItem('token');
                 // Set authorization header to contain Bearer token
                 let headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
@@ -33,7 +35,6 @@ export class Token implements HttpInterceptor{
                 }
                 const customReq = req.clone({headers: headers});
 
-                console.warn(customReq.headers.get('Authorization'));
                 return next.handle(customReq);
             }
             else {
@@ -42,7 +43,6 @@ export class Token implements HttpInterceptor{
                             // Do something with the response
                             if (event.headers.has('Authorization')) {
                                 const token = event.headers.get('Authorization');
-                                console.warn(token);
                                 sessionStorage.setItem('token', token);
                             }
 

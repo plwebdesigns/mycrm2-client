@@ -25,10 +25,10 @@
           <a class="button is-primary" routerLink="/register">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light" routerLink="/login">
+          <a class="button is-light" routerLink="/login" *ngIf="!auth">
             Log in
           </a>
-          <button class="button is-light" (click)="logout()">Logout</button>
+          <button *ngIf="auth" class="button is-light" (click)="logout()">Logout</button>
         </div>
       </div>
     </div>

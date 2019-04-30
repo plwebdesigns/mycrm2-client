@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
     })
   }
 
-  get f() { return this.signUpForm.controls };
+  get f() { return this.signUpForm.controls }; //Convience method to access form controls
 
   signUp(user) {
     const sub = this.logServ.signUp(user);

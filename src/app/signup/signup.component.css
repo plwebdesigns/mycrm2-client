@@ -5,9 +5,9 @@ table {
     background-color: #01D0B2;
     color: white;
 }
-.input.ng-valid {
+.input.ng-valid.ng-touched {
     border: 2px solid #42A948;
 }
-.input.ng-invalid {
+.input.ng-invalid.ng-touched {
     border: solid 2px #a94442;
 }

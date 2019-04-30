@@ -11,36 +11,54 @@
               <td>
                 First Name:
                 <input type="text" class="input" formControlName="first_name" id="first_name">
-                <div class="has-text-danger" *ngIf="f.first_name.invalid">Field is required</div>
+                <div
+                        class="has-text-danger"
+                        *ngIf="f.first_name.invalid && f.first_name.touched">Field is required
+                </div>
               </td>
               <td>
                 Last Name:
                 <input type="text" class="input" formControlName="last_name">
-                <div class="has-text-danger" *ngIf="f.last_name.invalid">Field is required</div>
+                <div
+                        class="has-text-danger"
+                        *ngIf="f.last_name.invalid && f.last_name.touched">Field is required
+                </div>
               </td>
             </tr>
             <tr>
               <td>
                 Primary Phone:
                 <input type="tel" class="input" formControlName="phone_1">
-                <div class="has-text-danger" *ngIf="f.phone_1.invalid">Field is required</div>
+                <div
+                        class="has-text-danger"
+                        *ngIf="f.phone_1.invalid && f.phone_1.touched">Field is required
+                </div>
               </td>
               <td>
                 Email:
                 <input type="email" class="input" formControlName="email">
-                <div class="has-text-danger" *ngIf="f.email.invalid">Field is required</div>
+                <div
+                        class="has-text-danger"
+                        *ngIf="f.email.invalid && f.email.touched">Field is required
+                </div>
               </td>
             </tr>
             <tr>
               <td>
                 Password:
                 <input type="password" class="input" formControlName="password">
-                <div class="has-text-danger" *ngIf="f.password.invalid">Field is required</div>
+                <div
+                        class="has-text-danger"
+                        *ngIf="f.password.invalid && f.password.touched">Field is required
+                </div>
               </td>
               <td>
                 Confirm Password:
                 <input type="password" class="input" formControlName="confirm_password">
-                <div class="has-text-danger" *ngIf="f.confirm_password.invalid">Field is required</div>
+                <div
+                        class="has-text-danger"
+                        *ngIf="f.confirm_password.invalid && f.confirm_password.touched">Field is required
+                </div>
               </td>
             </tr>
             <tr>

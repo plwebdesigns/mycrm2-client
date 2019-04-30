@@ -25,6 +25,7 @@ export class LoginService {
 
   private API_URL = 'https://longoapi.com/api/users/login';
 
+  isAuth: boolean = false;
 
   constructor(private http: HttpClient) { }
 
