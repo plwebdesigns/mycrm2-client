@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaderResponse, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Observable } from "rxjs";
-import {map} from "rxjs/operators";
+
 
 
 export interface Client {
@@ -43,6 +43,10 @@ export interface Client {
 let httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
+const headersDelete = {
+  headers: new HttpHeaders({'X-HTTP-Method-Override': 'DELETE'})
+};
+
 const myHeaders = {
   headers: new HttpHeaders({'X-HTTP-Method-Override': 'PUT'}),
 };
@@ -87,6 +91,11 @@ export class ClientService {
   /** PUT(update) client to server */
   updateClient(id: number, client): Observable<Client> {
     return this.http.post<Client>(this.API_URL + id, client, myHeaders);
+  }
+
+  /** DESTROY(delete) client from server */
+  deleteClient(id: number, client): Observable<Client> {
+    return this.http.post<Client>(this.API_URL + id, client, headersDelete);
   }
 
 }

@@ -31,7 +31,7 @@ export class Token implements HttpInterceptor{
 
                 // If post req is really PUT, add header
                 if (req.headers.has('X-Http-Method-Override')) {
-                    headers = headers.append('X-Http-Method-Override', 'PUT');
+                    return next.handle(req);
                 }
                 const customReq = req.clone({headers: headers});
 

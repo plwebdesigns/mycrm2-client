@@ -1,6 +1,6 @@
 import {Component, Input, Output, OnInit} from '@angular/core';
 import {Client, ClientService} from "../client.service";
-import { ActivatedRoute } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -15,7 +15,8 @@ export class ClientDetailComponent implements OnInit {
 
   constructor(
       private clientService: ClientService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private router: Router
       ) { }
 
   ngOnInit() {
@@ -34,6 +35,14 @@ export class ClientDetailComponent implements OnInit {
         .subscribe((cx: any) => { client = cx; },
             err => console.log('Observer error: ' + err),
             () => alert('Client with ID ' + id + ' updated'));
+  }
+
+  deleteClient(client) {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.clientService.deleteClient(id, client)
+        .subscribe((cx: any) => { client = cx },
+            err => console.log('Error with delete client ID: ' + this.client.id + err),
+            () => {alert(`Client with ${id} was deleted!`); this.router.navigate(['/'])});
   }
 
 }
