@@ -1,7 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import {Client, ClientService} from "../client.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {error} from "util";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-client-add',
@@ -20,18 +19,18 @@ export class ClientAddComponent implements OnInit {
 
   ngOnInit() {
     this.clientForm = this.fb.group({
-      first_name: [],
-      last_name: [],
-      status: [],
-      address_1: [],
-      address_2: [],
-      city: [],
-      state: [],
-      zipcode: [],
-      phone_1: [],
-      phone_2: [],
+      first_name: ['', [Validators.maxLength(50), Validators.required]],
+      last_name: ['', [Validators.maxLength(50), Validators.required]],
+      status: ['', [Validators.maxLength(50)]],
+      address_1: ['', [Validators.maxLength(100)]],
+      address_2: ['', [Validators.maxLength(100)]],
+      city: ['', [Validators.maxLength(50)]],
+      state: ['', [Validators.maxLength(2)]],
+      zipcode: ['', [Validators.maxLength(5)]],
+      phone_1: ['', [Validators.pattern('^\\D?(\\d{3})\\D?\\D?(\\d{3})\\D?(\\d{4})$')]],
+      phone_2: ['', [Validators.pattern('^\\D?(\\d{3})\\D?\\D?(\\d{3})\\D?(\\d{4})$')]],
       dob: [],
-      ssn: [],
+      ssn: ['', [Validators.maxLength(12)]],
       notes: []
     });
   }

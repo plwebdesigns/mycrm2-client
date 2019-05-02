@@ -4,7 +4,7 @@
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-8">
         <div class="tile is-parent is-vertical">
-          <article class="tile is-child notification is-info">
+          <article class="tile is-child notification is-primary">
             <h1 class="title is-2 has-text-centered">
               {{client.first_name | uppercase}} {{client.last_name | uppercase}}
             </h1>
@@ -73,7 +73,7 @@
       </div>
       <div class="tile is-vertical is-4">
         <div class="tile is-parent is-vertical">
-          <article class="tile is-child notification is-info">
+          <article class="tile is-child notification is-primary">
             <h1 class="title is-3 has-text-centered">Personal Info</h1>
             <table class="table is-narrow">
               <tr>
@@ -110,7 +110,7 @@
       <div class="tile is-vertical is-8">
         <div class="tile">
           <div class="tile is-parent is-vertical">
-            <article class="tile is-child notification is-info is-outlined">
+            <article class="tile is-child notification is-primary is-outlined">
               <h2 class="title is-3">Deals for {{client.first_name}}</h2>
               <table class="table">
                 <tr *ngFor="let deal of client.deal_id">

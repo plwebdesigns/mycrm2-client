@@ -33,17 +33,18 @@
               <input type="text" class="input" formControlName="city">
             </td>
             <td>State:
-              <input type="text" class="input" formControlName="state">
+              <input type="text" class="input" formControlName="state" placeholder="XX">
             </td>
             <td>Zipcode:
-              <input type="text" class="input" formControlName="zipcode">
+              <input type="text" class="input" formControlName="zipcode" placeholder="33333">
             </td>
           </tr>
         </table>
           <table class="table">
             <tr>
               <td>Notes:
-                  <textarea class="textarea" cols="50" rows="5" formControlName="notes"></textarea>
+                  <textarea class="textarea" cols="50" rows="5" formControlName="notes"
+                  placeholder="Enter notes here..."></textarea>
               </td>
             </tr>
           </table>
@@ -65,22 +66,22 @@
           <table class="table is-narrow">
             <tr>
               <td>Phone 1:
-                <input type="text" class="input" formControlName="phone_1">
+                <input type="tel" class="input" formControlName="phone_1" placeholder="555-555-5555">
               </td>
             </tr>
             <tr>
               <td>Phone 2:
-                <input type="text" class="input" formControlName="phone_2">
+                <input type="text" class="input" formControlName="phone_2" placeholder="555-555-5555">
               </td>
             </tr>
             <tr>
               <td>Date of Birth:
-                <input type="text" class="input" formControlName="dob">
+                <input type="date" class="input" formControlName="dob">
               </td>
             </tr>
             <tr>
               <td>Social Security:
-                <input type="text" class="input" formControlName="ssn">
+                <input type="text" class="input" formControlName="ssn" placeholder="999-99-9999">
               </td>
             </tr>
           </table>
