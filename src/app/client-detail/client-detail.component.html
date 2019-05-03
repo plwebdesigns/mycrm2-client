@@ -12,15 +12,16 @@
               <tr>
                 <td>First Name:
                   <input type="text" class="input" name="first_name"
-                         [ngModel]="client.first_name | uppercase" (ngModelChange)="client.first_name=$event">
+                         [ngModel]="client.first_name | uppercase"
+                         (ngModelChange)="client.first_name=$event" required [maxLength]="50">
                 </td>
                 <td>Last Name:
                   <input type="text" class="input" name="last_name" [ngModel]="client.last_name | uppercase"
-                         (ngModelChange)="client.last_name=$event">
+                         (ngModelChange)="client.last_name=$event" required [minLength]="3" [maxLength]="50">
                 </td>
                 <td>Status:
                   <input type="text" class="input" name="status" [ngModel]="client.status | uppercase"
-                         (ngModelChange)="client.status=$event">
+                         (ngModelChange)="client.status=$event" [maxLength]="30">
                 </td>
               </tr>
             </table>
@@ -28,11 +29,11 @@
               <tr>
                 <td>Address:
                   <input type="text" class="input" name="address_1" [ngModel]="client.address_1 | uppercase"
-                         (ngModelChange)="client.address_1=$event">
+                         (ngModelChange)="client.address_1=$event" [maxLength]="50">
                 </td>
                 <td>Address 2:
                   <input type="text" class="input" name="address_2" [ngModel]="client.address_2 | uppercase"
-                         (ngModelChange)="client.address_2=$event">
+                         (ngModelChange)="client.address_2=$event" [maxLength]="50">
                 </td>
               </tr>
             </table>
@@ -40,21 +41,24 @@
               <tr>
                 <td>City:
                   <input type="text" class="input" name="city" [ngModel]="client.city | uppercase"
-                         (ngModelChange)="client.city=$event">
+                         (ngModelChange)="client.city=$event" [maxLength]="50">
                 </td>
                 <td>State:
                   <input type="text" class="input" name="state" [ngModel]="client.state | uppercase"
-                         (ngModelChange)="client.state=$event">
+                         (ngModelChange)="client.state=$event" [maxLength]="2">
                 </td>
                 <td>Zipcode:
-                  <input type="text" class="input" name="zipcode" [(ngModel)]="client.zipcode">
+                  <input type="text" class="input" name="zipcode" [(ngModel)]="client.zipcode"
+                         [maxLength]="5">
                 </td>
               </tr>
             </table>
             <table class="table">
               <tr>
                 <td>Notes:
-                  <textarea class="textarea" cols="50" rows="5" name="notes" [(ngModel)]="client.notes"></textarea>
+                  <textarea class="textarea" cols="50" rows="5" name="notes"
+                            [(ngModel)]="client.notes"
+                            [maxLength]="500"></textarea>
                 </td>
               </tr>
             </table>
@@ -78,27 +82,41 @@
             <table class="table is-narrow">
               <tr>
                 <td>Phone 1:
-                  <input type="text" class="input" name="phone_1" [(ngModel)]="client.phone_1">
+                  <input type="text" class="input" name="phone_1"
+                         [(ngModel)]="client.phone_1" [maxLength]="12">
                 </td>
               </tr>
               <tr>
                 <td>Phone 2:
-                  <input type="text" class="input" name="phone_2" [(ngModel)]="client.phone_2">
+                  <input type="text" class="input" name="phone_2"
+                         [(ngModel)]="client.phone_2" [maxLength]="12">
                 </td>
               </tr>
               <tr>
                 <td>Date of Birth:
-                  <input type="text" class="input" name="dob" [(ngModel)]="client.dob">
+                  <input type="date" class="input" name="dob"
+                         [(ngModel)]="client.dob">
                 </td>
               </tr>
               <tr>
                 <td>Social Security:
-                  <input type="text" class="input" name="ssn" [(ngModel)]="client.ssn">
+                  <input type="text" class="input" name="ssn"
+                         [(ngModel)]="client.ssn" [maxLength]="12">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <input type="hidden" class="input" name="id" [(ngModel)]="client.id">
+                Client ID:
+                <input type="text" class="input" name="id"
+                       [(ngModel)]="client.id" disabled>
+              </td>
+              </tr>
+              <tr>
+                <td>
+                  Updated At:
+                  <input type="text" class="input" name="updated_at"
+                         [ngModel]="client.updated_at | date:'mediumDate'"
+                         (ngModelChange)="client.updated_at=$event" disabled>
                 </td>
               </tr>
             </table>

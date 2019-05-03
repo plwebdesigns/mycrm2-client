@@ -5,3 +5,9 @@ table {
 .table td, .table th {
     border: none;
 }
+.input.ng-valid.ng-touched {
+    border: 2px solid #42A948;
+}
+.input.ng-invalid.ng-touched {
+    border: solid 2px #a94442;
+}

@@ -1,6 +1,7 @@
 import {Component, Input, Output, OnInit} from '@angular/core';
 import {Client, ClientService} from "../client.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import DateTimeFormat = Intl.DateTimeFormat;
 
 
 @Component({
@@ -31,6 +32,7 @@ export class ClientDetailComponent implements OnInit {
 
   updateClient(client) {
     const id = +this.route.snapshot.paramMap.get('id');
+    this.client.updated_at = new Date().toDateString();
     this.clientService.updateClient(id, client)
         .subscribe((cx: any) => { client = cx; },
             err => console.log('Observer error: ' + err),
