@@ -13,6 +13,7 @@ import { ClientDetailComponent } from './client-detail/client-detail.component';
 import { ClientAddComponent } from './client-add/client-add.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { MustMatchDirective } from './must-match.directive';
 
 
 
@@ -26,6 +27,7 @@ import { SignupComponent } from './signup/signup.component';
     ClientAddComponent,
     LoginComponent,
     SignupComponent,
+    MustMatchDirective,
   ],
   imports: [
     BrowserModule,

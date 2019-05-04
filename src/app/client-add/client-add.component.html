@@ -9,13 +9,13 @@
             <td>First Name:
               <input type="text" class="input" formControlName="first_name" required [minLength]="3">
               <div *ngIf="f.first_name.invalid && f.first_name.touched"
-                   class="has-text-danger">Please enter at least 3 letters
+                   class="help is-danger">Please enter at least 3 letters
               </div>
             </td>
             <td>Last Name:
               <input type="text" class="input" formControlName="last_name">
               <div *ngIf="f.last_name.invalid && f.last_name.touched"
-                   class="has-text-danger">Please enter at least 3 letters
+                   class="help is-danger">Please enter at least 3 letters
               </div>
             </td>
             <td>Status:

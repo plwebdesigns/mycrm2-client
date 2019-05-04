@@ -49,7 +49,8 @@
                 <input type="password" class="input" formControlName="password">
                 <div
                         class="has-text-danger"
-                        *ngIf="f.password.invalid && f.password.touched">Field is required
+                        *ngIf="f.password.invalid && f.password.touched">
+                  Field is required, minimum of 8 characters
                 </div>
               </td>
               <td>
@@ -57,7 +58,11 @@
                 <input type="password" class="input" formControlName="confirm_password">
                 <div
                         class="has-text-danger"
-                        *ngIf="f.confirm_password.invalid && f.confirm_password.touched">Field is required
+                        *ngIf="f.confirm_password.invalid && f.confirm_password.touched">
+                  Field is required, minimum of 8 characters
+                </div>
+                <div class="help is-danger" *ngIf="f.confirm_password.errors?.mustMatch">
+                  Must match Password
                 </div>
               </td>
             </tr>

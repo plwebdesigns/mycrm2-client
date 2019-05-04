@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService, User} from "../login.service";
-import {FormBuilder, FormGroup, Validators, NgModel} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {mustMatch} from "../must-match.directive";
 
 
 @Component({
@@ -18,13 +19,15 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.signUpForm = this.fb.group({
-      first_name: ['', Validators.required],
+      first_name: ['', [Validators.required, Validators.minLength(3)]],
       last_name: ['', [Validators.required, Validators.minLength(4)]],
       phone_1: ['', [Validators.required, Validators.pattern('^\\D?(\\d{3})\\D?\\D?(\\d{3})\\D?(\\d{4})$')]],
-      email: ['', Validators.required],
-      password:['', Validators.required],
-      confirm_password: ['', Validators.required]
-    })
+      email: ['', [Validators.required, Validators.email]],
+      password:['', [Validators.required, Validators.minLength(8)]],
+      confirm_password: ['', [Validators.required, Validators.minLength(8)]]},
+        {validators: mustMatch('password', 'confirm_password')}
+
+    );
   }
 
   get f() { return this.signUpForm.controls }; //Convience method to access form controls
