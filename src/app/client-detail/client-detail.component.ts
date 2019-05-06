@@ -35,16 +35,20 @@ export class ClientDetailComponent implements OnInit {
     this.client.updated_at = new Date().toDateString();
     this.clientService.updateClient(id, client)
         .subscribe((cx: any) => { client = cx; },
-            err => console.log('Observer error: ' + err),
-            () => alert('Client with ID ' + id + ' updated'));
+            err => console.log('Observer error with updateClient() ' + err),
+            () => this.toggleModal());
   }
 
   deleteClient(client) {
     const id = +this.route.snapshot.paramMap.get('id');
     this.clientService.deleteClient(id, client)
         .subscribe((cx: any) => { client = cx },
-            err => console.log('Error with delete client ID: ' + this.client.id + err),
+            err => console.log('Error with delete client ID', err),
             () => {alert(`Client with ${id} was deleted!`); this.router.navigate(['/'])});
+  }
+
+  toggleModal() {
+    document.getElementById('modal-success').classList.toggle('is-active');
   }
 
 }

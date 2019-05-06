@@ -154,3 +154,18 @@
   </form>
 
 </div>
+<div class="modal" id="modal-success">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title has-text-primary">SUCCESS</p>
+      <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <p>Information for client {{client?.first_name}} {{client?.last_name}} has been updated!</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" (click)="toggleModal()">Close</button>
+    </footer>
+  </div>
+</div>

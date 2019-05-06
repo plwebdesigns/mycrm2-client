@@ -41,8 +41,13 @@ export class ClientAddComponent implements OnInit {
     client = this.clientForm.value;
     this.clientService.addClient(client)
         .subscribe((cx: any) => { this.client = cx},
-                err => console.log('Observer error at add client: ' + err),
+                err => console.log(this.closeModal()),
             () => alert('Client added'));
+  }
+
+  closeModal() {
+    document.getElementById('modal-error').classList.toggle('is-active');
+    this.clientForm.reset();
   }
 
 }
