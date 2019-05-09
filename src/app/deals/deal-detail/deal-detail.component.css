@@ -1,0 +1,7 @@
+table {
+    background-color: #01D0B2;
+    color: white;
+}
+.table td, .table th {
+    border: none;
+}

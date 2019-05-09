@@ -5,6 +5,8 @@ import {ClientDetailComponent} from "./client-detail/client-detail.component";
 import {ClientAddComponent} from "./client-add/client-add.component";
 import {LoginComponent} from "./login/login.component";
 import {SignupComponent} from "./signup/signup.component";
+import {DealDetailComponent} from "./deals/deal-detail/deal-detail.component";
+import {DealsComponent} from "./deals/deals/deals.component";
 
 
 const routes: Routes = [
@@ -12,7 +14,9 @@ const routes: Routes = [
   {path: 'clients/:id', component: ClientDetailComponent},
   {path: 'client-add', component: ClientAddComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: SignupComponent}
+  {path: 'register', component: SignupComponent},
+  {path:'deals', component: DealsComponent},
+  {path: 'deals/:id', component: DealDetailComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,75 @@
+<div *ngIf="deal">
+  <form>
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child notification is-primary">
+            <h1 class="title is-1 has-text-centered">DEAL {{deal.id}}</h1>
+            <table class="table is-narrow">
+              <tr>
+                <td>
+                  Status:
+                  <input class="input" name="status"
+                         [ngModel]="deal.status"
+                         (ngModelChange)="deal.status=$event">
+                </td>
+                <td>
+                  Amount Client Received:
+                  <input class="input" name="amt_client_recvd"
+                         [ngModel]="deal.amt_client_recvd"
+                         (ngModelChange)="deal.amt_client_recvd=$event">
+                </td>
+                <td>
+                  Profit:
+                  <input class="input" name="profit"
+                         [ngModel]="deal.profit"
+                         (ngModelChange)="deal.profit=$event">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Payments Purchased:
+                  <input class="input" name="payments_purchased"
+                         [ngModel]="deal.payments_purchased"
+                         (ngModelChange)="deal.payments_purchased=$event">
+                </td>
+                <td>
+                  Payments Remaining:
+                  <input class="input" name="payments_remaining"
+                         [ngModel]="deal.payments_remaining"
+                         (ngModelChange)="deal.payments_remaining=$event">
+                </td>
+                <td>
+                  Notes:
+                  <input class="input" name="notes"
+                         [ngModel]="deal.notes"
+                         (ngModelChange)="deal.notes=$event">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Sales Person:
+                  <input class="input" name="sales_person"
+                         [ngModel]="deal.sales_person"
+                         (ngModelChange)="deal.sales_person=$event">
+                </td>
+                <td>
+                  Updated:
+                  <input class="input" name="updated_at"
+                         [ngModel]="deal.updated_at | date:'mm/dd/yyyy'"
+                         (ngModelChange)="deal.updated_at=$event">
+                </td>
+                <td>
+                  Deal ID:
+                  <input class="input" name="id"
+                         [ngModel]="deal.id"
+                         (ngModelChange)="deal.id=$event" disabled>
+                </td>
+              </tr>
+            </table>
+          </article>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

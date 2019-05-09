@@ -67,7 +67,7 @@
                 <td>
                   <button type="submit" class="button is-link is-inverted"
                           style="margin-right: 5px" (click)="updateClient(clientForm.value)">Update</button>
-                  <button class="button is-link is-inverted" routerLink="/">Back to clients</button>
+                  <button style="margin-right: 5px" class="button is-link is-inverted" routerLink="/">Back to clients</button>
                   <button class="button is-link is-danger" (click)="deleteClient(clientForm.value)">Delete</button>
                 </td>
               </tr>
@@ -142,7 +142,7 @@
                   </td>
                   <td>
                     <strong>Status:</strong>
-                    {{deal.status}}
+                    <a class="is-link" routerLink="/deals/{{deal.id}}">{{deal.status}}</a>
                   </td>
                 </tr>
               </table>
