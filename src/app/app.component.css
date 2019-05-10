@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
 a.panel-block {
-    font-family: "Bodoni 72";
+    font-family: "Bodoni 72", sans-serif;
     font-size: larger;
 }
 .panel-block {
 
 }
 .navbar.is-warning.my-nav {
-    height: 100px;
+    height: 50px;
+}
+.my-nav h2 {
+    font-family: 'oswald', sans-serif;
 }

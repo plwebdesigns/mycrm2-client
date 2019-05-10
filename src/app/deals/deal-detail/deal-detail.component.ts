@@ -22,7 +22,9 @@ export class DealDetailComponent implements OnInit {
 
   showDeal() {
     const id = +this.route.snapshot.paramMap.get('id');
+
     const seq = this.dealService.showDeal(id);
+
 
     seq.subscribe((deal: any) => {this.deal = deal.data },
         err => console.warn('Something went wrong with showDeal() ' + err)

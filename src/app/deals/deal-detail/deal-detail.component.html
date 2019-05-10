@@ -56,7 +56,7 @@
                 <td>
                   Updated:
                   <input class="input" name="updated_at"
-                         [ngModel]="deal.updated_at | date:'mm/dd/yyyy'"
+                         [ngModel]="deal.updated_at | date:'mediumDate'"
                          (ngModelChange)="deal.updated_at=$event">
                 </td>
                 <td>
