@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Deal, DealService} from "../../deal.service";
 import {ActivatedRoute} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-deal-detail',
@@ -13,7 +14,8 @@ export class DealDetailComponent implements OnInit {
 
   constructor(
       private dealService: DealService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private location: Location
   ) { }
 
   ngOnInit() {
@@ -31,14 +33,21 @@ export class DealDetailComponent implements OnInit {
         );
   }
   
-  updateDeal() {
+  updateDeal(deal) {
     const id = +this.route.snapshot.paramMap.get('id');
-    const seq = this.dealService.updateDeal(id, this.deal);
+    const seq = this.dealService.updateDeal(id, deal);
     
-    seq.subscribe((deal: any) => {this.deal = deal.data},
+    seq.subscribe((dx: any) => {deal = dx},
       err => console.warn('Something went wrong with updateDeal() ' + err),
-      () => alert('Success!!')
+      () => this.toggleModal()
     );
+  }
+  toggleModal() {
+    document.getElementById('modal-success').classList.toggle('is-active');
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

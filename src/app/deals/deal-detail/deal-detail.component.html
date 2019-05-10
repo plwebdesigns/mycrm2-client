@@ -68,6 +68,7 @@
               </tr>
               <tr>
                 <td><button class="button is-link is-inverted" (click)="updateDeal(dealForm.value)">Update</button></td>
+                <td><button class="button is-link is-inverted" (click)="goBack()">Back</button></td>
               </tr>
             </table>
           </article>
@@ -75,4 +76,19 @@
       </div>
     </div>
   </form>
+</div>
+<div class="modal" id="modal-success">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title has-text-primary">SUCCESS</p>
+      <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <p>Information for deal {{deal?.id}} has been updated!</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" (click)="toggleModal()">Close</button>
+    </footer>
+  </div>
 </div>
