@@ -2,13 +2,17 @@
   <thead>
     <th>ID</th>
     <th>STATUS</th>
-    <th>TRANSACTION DATE</th>
+    <th>CREATED ON</th>
+    <th>UPDATED ON</th>
+    <th>CLIENT RECIEVED</th>
   </thead>
   <tbody>
     <tr *ngFor="let deal of deals">
       <td><a routerLink="/deals/{{deal.id}}">{{deal.id}}</a></td>
       <td><a routerLink="/deals/{{deal.id}}">{{deal.status}}</a></td>
-      <td><a routerLink="/deals/{{deal.id}}">{{deal.transaction_date | date:'mediumDate'}}</a></td>
+      <td>{{deal.created_at | date:'mediumDate'}}</td>
+      <td>{{deal.updated_at | date:'mediumDate'}}</td>
+      <td>{{deal.amt_client_recvd | currency}}</td>
     </tr>
   </tbody>
 </table>
