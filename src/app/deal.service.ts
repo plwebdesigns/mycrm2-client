@@ -48,4 +48,10 @@ export class DealService {
         options
         );
   }
+  /* Function for updating deal in deal-detail */
+  updateDeal(id: number, deal): Observable<Deal> {
+    options.headers = options.headers.append('X-Http-Method-Override', 'PUT');
+    return this.http.post<Deal>(this.API_URL + id, options);
+  }
+  
 }

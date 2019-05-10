@@ -1,5 +1,5 @@
 <div *ngIf="deal">
-  <form>
+  <form #dealForm="ngForm">
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-8">
         <div class="tile is-parent is-vertical">
@@ -65,6 +65,9 @@
                          [ngModel]="deal.id"
                          (ngModelChange)="deal.id=$event" disabled>
                 </td>
+              </tr>
+              <tr>
+                <td><button class="button is-link is-inverted" (click)="updateDeal(dealForm.value)">Update</button></td>
               </tr>
             </table>
           </article>

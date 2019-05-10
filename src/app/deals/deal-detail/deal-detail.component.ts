@@ -30,5 +30,15 @@ export class DealDetailComponent implements OnInit {
         err => console.warn('Something went wrong with showDeal() ' + err)
         );
   }
+  
+  updateDeal() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    const seq = this.dealService.updateDeal(id, this.deal);
+    
+    seq.subscribe((deal: any) => {this.deal = deal.data},
+      err => console.warn('Something went wrong with updateDeal() ' + err),
+      () => alert('Success!!')
+    );
+  }
 
 }
