@@ -75,7 +75,7 @@ export class ClientService {
     return this.http.get<Client[]>(
         this.API_URL
         + 'search?search='
-        + term.toUpperCase(), httpOptions);
+        + term, httpOptions);
   }
 
   /** GET single client from the server */
