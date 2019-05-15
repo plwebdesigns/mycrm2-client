@@ -66,10 +66,21 @@
               <tr>
                 <td>
                   <button type="submit" class="button is-link is-inverted"
-                          style="margin-right: 5px" (click)="updateClient(clientForm.value)">Update</button>
-                  <button style="margin-right: 5px" class="button is-link is-inverted" routerLink="/">Back to clients</button>
-                  <button class="button is-link is-danger" (click)="deleteClient(clientForm.value)">Delete</button>
+                          style="margin-right: 5px" 
+                          (click)="updateClient(clientForm.value)">
+                          Update</button>
+                  <button style="margin-right: 5px" 
+                  class="button is-link is-inverted" 
+                  routerLink="/">
+                  Back to clients</button>
+                  <button class="button is-link is-danger" 
+                  (click)="deleteClient(clientForm.value)">
+                  Delete</button>
                 </td>
+                <td></td>
+                <td><button class="button is-link is-info">
+                  
+                  Add Deal</button></td>
               </tr>
             </table>
           </article>

@@ -6,6 +6,9 @@ table {
     border: none;
 }
 
-.requiredValidation {
-    border: red solid 2px;
+.input.ng-valid.ng-touched {
+    border: 2px solid #42A948;
+}
+.input.ng-invalid.ng-touched {
+    border: solid 2px #a94442;
 }

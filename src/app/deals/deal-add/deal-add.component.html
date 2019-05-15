@@ -17,13 +17,25 @@
                   Amount Client Received:
                   <input class="input" name="amt_client_recvd"
                          [ngModel]="model?.amt_client_recvd"
+                         required minlength="3"
+                         #amt_client_recvd="ngModel"
                          >
+                  <div class="help is-danger" 
+                  *ngIf="amt_client_recvd.invalid && amt_client_recvd.touched">
+                    This field is required
+                  </div>
                 </td>
                 <td>
                   Profit:
                   <input class="input" name="profit"
                          [ngModel]="model?.profit"
+                         required minlength="3"
+                         #profit="ngModel"
                          >
+                  <div class="help is-danger" 
+                      *ngIf="profit.invalid && profit.touched">
+                        This field is required
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -63,7 +75,13 @@
                   Client ID:
                   <input class="input" name="client_id"
                          [ngModel]="model?.client_id"
+                         required
+                         #client_id="ngModel"
                          >
+                  <div class="help is-danger" 
+                         *ngIf="client_id.invalid && client_id.touched">
+                           This field is required
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -73,7 +91,8 @@
                           class="button is-link is-inverted"
                           >Save
                   </button>
-                  <button class="button is-link is-inverted" (click)="goBack()">Back</button>
+                  <button class="button is-link is-inverted" 
+                  (click)="goBack()">Back</button>
                 </td>
               </tr>
             </table>
