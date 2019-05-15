@@ -16,6 +16,7 @@ import { SignupComponent } from './signup/signup.component';
 import { MustMatchDirective } from './must-match.directive';
 import { DealDetailComponent } from './deals/deal-detail/deal-detail.component';
 import { DealsComponent } from './deals/deals/deals.component';
+import { DealAddComponent } from './deals/deal-add/deal-add.component';
 
 
 
@@ -32,6 +33,7 @@ import { DealsComponent } from './deals/deals/deals.component';
     MustMatchDirective,
     DealDetailComponent,
     DealsComponent,
+    DealAddComponent,
   ],
   imports: [
     BrowserModule,

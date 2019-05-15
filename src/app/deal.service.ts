@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {Observable, throwError} from "rxjs";
+import {catchError} from "rxjs/operators";
 
 export interface Deal {
   id: number;
@@ -36,6 +37,23 @@ export class DealService {
 
   private API_URL = 'https://longoapi.com/api/deals/';
 
+  private handleError(error: HttpErrorResponse, obj: any) {
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      console.error(
+          `Backend returned code ${error.status}, ` +
+          `body was: ${error.error}`
+
+      );
+    }
+    // return an observable with a user-facing error message
+    return throwError(
+        'Something bad happened; please try again later.');
+  };
+
   /* Function to retrieve all deals */
   getDeals(): Observable<Deal[]> {
     return this.http.get<Deal[]>(this.API_URL, options);
@@ -52,6 +70,11 @@ export class DealService {
   updateDeal(id: number, deal): Observable<Deal> {
     options.headers = options.headers.append('X-Http-Method-Override', 'PUT');
     return this.http.post<Deal>(this.API_URL + id, deal, options);
+  }
+
+  addDeal(deal): Observable<Deal>{
+    return this.http.post<Deal>(this.API_URL, deal, options)
+        .pipe(catchError(this.handleError));
   }
   
 }

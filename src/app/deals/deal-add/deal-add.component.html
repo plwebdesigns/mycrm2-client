@@ -1,0 +1,85 @@
+<div>
+  <form #dealForm="ngForm" (ngSubmit)="addDeal(dealForm.value)">
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-8">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child notification is-primary">
+            <h1 class="title is-1 has-text-centered">DEAL</h1>
+            <table class="table is-narrow">
+              <tr>
+                <td>
+                  Status:
+                  <input class="input" name="status"
+                         [ngModel]="model?.status"
+                         >
+                </td>
+                <td>
+                  Amount Client Received:
+                  <input class="input" name="amt_client_recvd"
+                         [ngModel]="model?.amt_client_recvd"
+                         >
+                </td>
+                <td>
+                  Profit:
+                  <input class="input" name="profit"
+                         [ngModel]="model?.profit"
+                         >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Payments Purchased:
+                  <input class="input" name="payments_purchased"
+                         [ngModel]="model?.payments_purchased"
+                         >
+                </td>
+                <td>
+                  Payments Remaining:
+                  <input class="input" name="payments_remaining"
+                         [ngModel]="model?.payments_remaining"
+                         >
+                </td>
+                <td>
+                  Notes:
+                  <input class="input" name="notes"
+                         [ngModel]="model?.notes"
+                         >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Sales Person:
+                  <input class="input" name="sales_person"
+                         [ngModel]="model?.sales_person"
+                         >
+                </td>
+                <td>
+                  Updated:
+                  <input class="input" name="updated_at"
+                         [ngModel]="model?.updated_at"
+                         >
+                </td>
+                <td>
+                  Client ID:
+                  <input class="input" name="client_id"
+                         [ngModel]="model?.client_id"
+                         >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <button
+                          style="margin-right: 4px"
+                          class="button is-link is-inverted"
+                          >Save
+                  </button>
+                  <button class="button is-link is-inverted" (click)="goBack()">Back</button>
+                </td>
+              </tr>
+            </table>
+          </article>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

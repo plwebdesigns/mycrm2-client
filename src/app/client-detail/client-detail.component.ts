@@ -1,7 +1,7 @@
 import {Component, Input, Output, OnInit} from '@angular/core';
 import {Client, ClientService} from "../client.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import DateTimeFormat = Intl.DateTimeFormat;
+import {Deal, DealService} from "../deal.service";
 
 
 @Component({
@@ -16,6 +16,7 @@ export class ClientDetailComponent implements OnInit {
 
   constructor(
       private clientService: ClientService,
+      private dealService: DealService,
       private route: ActivatedRoute,
       private router: Router
       ) { }
@@ -34,7 +35,8 @@ export class ClientDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.client.updated_at = new Date().toDateString();
     this.clientService.updateClient(id, client)
-        .subscribe((cx: any) => { client = cx; },
+        .subscribe(
+            (cx: any) => { client = cx; },
             err => console.log('Observer error with updateClient() ' + err),
             () => this.toggleModal());
   }
@@ -42,7 +44,8 @@ export class ClientDetailComponent implements OnInit {
   deleteClient(client) {
     const id = +this.route.snapshot.paramMap.get('id');
     this.clientService.deleteClient(id, client)
-        .subscribe((cx: any) => { client = cx },
+        .subscribe(
+            (cx: any) => { client = cx },
             err => console.log('Error with delete client ID', err),
             () => {alert(`Client with ${id} was deleted!`); this.router.navigate(['/'])});
   }
