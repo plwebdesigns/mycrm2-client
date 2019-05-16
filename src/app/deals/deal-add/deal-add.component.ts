@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Deal, DealService} from "../../deal.service";
+import {DealService} from "../../deal.service";
 import {Location} from "@angular/common";
 import {Model} from "./model";
 
@@ -11,11 +11,19 @@ import {Model} from "./model";
 })
 export class DealAddComponent implements OnInit {
 
-  model = new Model();
+  d = new Date().toDateString();
+
+  model = new Model(
+    undefined, undefined,undefined,undefined,
+    undefined, undefined,undefined,
+    undefined, undefined, undefined,
+    undefined, undefined, this.d,
+    this.d
+  );
 
   constructor(
       private dealService: DealService,
-      private location: Location,
+      private location: Location
   ) { }
 
   ngOnInit() {
@@ -23,18 +31,21 @@ export class DealAddComponent implements OnInit {
   }
 
   addDeal(deal){
-    console.warn(deal);
     const seq = this.dealService.addDeal(deal);
     seq.subscribe(
         (dx: any) => { deal = dx},
         err => console.warn('addDeal() error ' + err ),
-        () => console.log('successfully added!')
+        () => this.toggleModal()
     );
 
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  toggleModal() {
+    document.getElementById('modal-success').classList.toggle('is-active');
   }
 
 }

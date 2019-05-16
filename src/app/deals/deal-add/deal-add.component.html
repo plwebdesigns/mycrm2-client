@@ -1,7 +1,7 @@
 <div>
   <form #dealForm="ngForm" (ngSubmit)="addDeal(dealForm.value)">
     <div class="tile is-ancestor">
-      <div class="tile is-vertical is-8">
+      <div class="tile is-vertical is-10">
         <div class="tile is-parent is-vertical">
           <article class="tile is-child notification is-primary">
             <h1 class="title is-1 has-text-centered">DEAL</h1>
@@ -11,6 +11,13 @@
                   Status:
                   <input class="input" name="status"
                          [ngModel]="model?.status"
+                         >
+                </td>
+                <td>
+                  Transaction Date:
+                  <input class="input" name="transaction_date"
+                         [ngModel]="model?.transaction_date"
+                         
                          >
                 </td>
                 <td>
@@ -24,6 +31,21 @@
                   *ngIf="amt_client_recvd.invalid && amt_client_recvd.touched">
                     This field is required
                   </div>
+                </td>
+                
+              </tr>
+              <tr>
+                <td>
+                  Payments Purchased:
+                  <input class="input" name="payments_purchased"
+                         [ngModel]="model?.payments_purchased"
+                         >
+                </td>
+                <td>
+                  Payments Remaining:
+                  <input class="input" name="payments_remaining"
+                         [ngModel]="model?.payments_remaining"
+                         >
                 </td>
                 <td>
                   Profit:
@@ -40,35 +62,15 @@
               </tr>
               <tr>
                 <td>
-                  Payments Purchased:
-                  <input class="input" name="payments_purchased"
-                         [ngModel]="model?.payments_purchased"
-                         >
-                </td>
-                <td>
-                  Payments Remaining:
-                  <input class="input" name="payments_remaining"
-                         [ngModel]="model?.payments_remaining"
-                         >
-                </td>
-                <td>
-                  Notes:
-                  <input class="input" name="notes"
-                         [ngModel]="model?.notes"
-                         >
-                </td>
-              </tr>
-              <tr>
-                <td>
                   Sales Person:
                   <input class="input" name="sales_person"
                          [ngModel]="model?.sales_person"
                          >
                 </td>
                 <td>
-                  Updated:
-                  <input class="input" name="updated_at"
-                         [ngModel]="model?.updated_at"
+                  County:
+                  <input class="input" name="county"
+                         [ngModel]="model?.county"
                          >
                 </td>
                 <td>
@@ -84,11 +86,26 @@
                   </div>
                 </td>
               </tr>
+            </table>
+            <table class="table">
+              <tr>
+                <td>
+                  Notes:
+                  <textarea class="textarea" name="notes"
+                         [ngModel]="model?.notes"
+                         style="min-width: 500px; min-height: 200px"
+                         >
+                  </textarea>
+                </td>
+              </tr>
+            </table>
+            <table class="table">
               <tr>
                 <td>
                   <button
                           style="margin-right: 4px"
                           class="button is-link is-inverted"
+                          *ngIf="dealForm.valid"
                           >Save
                   </button>
                   <button class="button is-link is-inverted" 
@@ -102,3 +119,19 @@
     </div>
   </form>
 </div>
+<!-- Modal for successful add deal -->
+<div class="modal" id="modal-success">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title has-text-primary">SUCCESS</p>
+        <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+      </header>
+      <section class="modal-card-body">
+        <p>Deal has been added successfully!</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button" (click)="toggleModal()">Close</button>
+      </footer>
+    </div>
+  </div>
