@@ -140,7 +140,7 @@
         <div class="tile">
           <div class="tile is-parent is-vertical">
             <article class="tile is-child notification is-primary is-outlined">
-              <h2 class="title is-3">Deals for {{client.first_name}}</h2>
+              <h2 class="title is-3">Deals for {{client.first_name | uppercase}}</h2>
               <table class="table">
                 <tr *ngFor="let deal of client.deal_id">
                   <td>
@@ -153,7 +153,7 @@
                   </td>
                   <td>
                     <strong>Status:</strong>
-                    <a class="is-link" routerLink="/deals/{{deal.id}}">{{deal.status}}</a>
+                    <a class="is-link" routerLink="/deals/{{deal.id}}">{{deal.status | uppercase}}</a>
                   </td>
                 </tr>
               </table>

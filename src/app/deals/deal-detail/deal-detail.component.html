@@ -10,7 +10,7 @@
                 <td>
                   Status:
                   <input class="input" name="status"
-                         [ngModel]="deal.status"
+                         [ngModel]="deal.status | uppercase"
                          (ngModelChange)="deal.status=$event">
                 </td>
                 <td>
@@ -50,7 +50,7 @@
                 <td>
                   Sales Person:
                   <input class="input" name="sales_person"
-                         [ngModel]="deal.sales_person"
+                         [ngModel]="deal.sales_person | uppercase"
                          (ngModelChange)="deal.sales_person=$event">
                 </td>
                 <td>

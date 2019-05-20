@@ -3,25 +3,25 @@
       <div class="navbar-item">
         <h2 class="is-3 title">Paul's CRM</h2>
       </div>
-
-
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
   </div>
-  <div class="navbar-menu">
-    <div class="navbar-start">
+  <div>
+    <div class="navbar-start is-hidden-touch">
       <a class="navbar-item" routerLink="/">Clients</a>
       <a class="navbar-item" routerLink="/deals">Deals</a>
-      <a class="navbar-item">Tasks</a>
+    </div>
+    <div class="buttons is-hidden-desktop">
+      <a class="button is-small is-primary" routerLink="/register">
+        <strong>Sign up</strong>
+      </a>
+      <a class="button is-small is-light" routerLink="/login" *ngIf="!auth">
+        Log in
+      </a>
+      <button *ngIf="auth" class="button is-light" (click)="logout()">Logout</button>
     </div>
   </div>
-
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
+        <div class="buttons is-hidden-touch">
           <a class="button is-primary" routerLink="/register">
             <strong>Sign up</strong>
           </a>
@@ -30,18 +30,26 @@
           </a>
           <button *ngIf="auth" class="button is-light" (click)="logout()">Logout</button>
         </div>
+
       </div>
     </div>
 </nav>
 
 <div class="container" style="margin-top: 30px">
-  <div class="columns">
+  <div class="columns is-desktop">
     <div class="column is-four-fifths"><router-outlet></router-outlet></div>
     <div class="column is-one-fifth has-text-centered">
       <nav class="panel">
         <p class="panel-heading">Action Section</p>
         <a class="panel-block is-success" routerLink="/client-add">Add New Client</a>
         <a class="panel-block" routerLink="/deal-add">Add Deal</a>
+        <a class="panel-block">Panel link three</a>
+        <a class="panel-block">Panel link four</a>
+      </nav>
+      <nav class="panel" *ngIf="adminAuth">
+        <p class="panel-heading">ADMIN</p>
+        <a class="panel-block is-success" routerLink="/">Manage Employees</a>
+        <a class="panel-block" routerLink="/">Panel link two</a>
         <a class="panel-block">Panel link three</a>
         <a class="panel-block">Panel link four</a>
       </nav>

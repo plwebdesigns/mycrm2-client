@@ -13,30 +13,28 @@
 <div *ngIf="isLoading">
   <h3 class="title is-3">Loading....</h3>
 </div>
-<table class="table" *ngIf="!isLoading">
-  <thead>
-    <th>ID</th>
-    <th>FIRST NAME</th>
-    <th>LAST NAME</th>
-    <th>CITY</th>
-    <th>DOB</th>
-    <th>SSN</th>
-    <th>PHONE 1</th>
-    <th>CREATED:</th>
-  </thead>
-  <tbody>
-  <tr *ngFor="let client of clients">
-    <td><a routerLink="/clients/{{client.id}}">{{client.id}}</a> </td>
-    <td><a routerLink="/clients/{{client.id}}">{{client.first_name | uppercase}}</a></td>
-    <td><a routerLink="/clients/{{client.id}}">{{client.last_name | uppercase}}</a></td>
-    <td>{{client.state | uppercase}}</td>
-    <td>{{client.dob}}</td>
-    <td>{{client.ssn}}</td>
-    <td>{{client.phone_1}}</td>
-    <td>{{client.created_at | date:'mediumDate' }}</td>
-  </tr>
-  </tbody>
-</table>
+<table class="table clients-table" *ngIf="!isLoading">
+    <thead>
+      <th>ID</th>
+      <th>FIRST NAME</th>
+      <th>LAST NAME</th>
+      <th class="hidden">STATE</th>
+      <th class="hidden">DOB</th>
+      <th>PHONE 1</th>
+      <th>SSN</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients">
+      <td class="clickable"><a routerLink="/clients/{{client.id}}">{{client.id}}</a> </td>
+      <td class="clickable"><a routerLink="/clients/{{client.id}}">{{client.first_name | uppercase}}</a></td>
+      <td class="clickable"><a routerLink="/clients/{{client.id}}">{{client.last_name | uppercase}}</a></td>
+      <td class="hidden">{{client.state | uppercase}}</td>
+      <td class="hidden">{{client.dob}}</td>
+      <td>{{client.phone_1}}</td>
+      <td>{{client.ssn}}</td>
+    </tr>
+    </tbody>
+  </table>
 <table class="table">
   <tr>
     <td>

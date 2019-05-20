@@ -1,13 +1,55 @@
-.table thead {
-    background-color: #4FC4A6;
-    border-radius: 10px;
-}
+@import url('https://fonts.googleapis.com/css?family=Asap&display=swap');
 .table th {
     color: white;
+    border: #4FC4A6 2px solid;
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px; */
+    background-color: #4FC4A6;
+    padding: 5px 20px;
+    text-align: center;
+    line-height: 50%;
 }
-.table td, .table th {
-    border: none;
+.table.clients-table tbody tr {
+    line-height: 70%;
 }
-.table tbody tr {
-    line-height: 35%;
+.table.clients-table tbody tr :hover {
+    background-color: #4FC4A6;
+    color: aliceblue;
+}
+.table.clients-table {
+    /* border: #4FC4A6 1px solid; */
+    border-collapse: unset;
+    font-family: 'Asap', sans-serif;
+    /* border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px; */
+}
+.table.clients-table td {
+    border-bottom: #4FC4A6 solid 1px;
+}
+
+.clickable a {
+    display: block;
+}
+.hidden {
+    display: table-cell;
+    text-align: center;
+}
+
+
+/* Adjustments made for smaller size screens */
+@media only screen and (max-width: 600px) {
+    .table {font-size: 5px;}
+    .hidden {display: none;}
+}
+@media only screen and (min-width: 601px){
+    .table {font-size: 10px;}
+    .hidden {display: none;}
+}
+@media only screen and (min-width: 860px){
+    .table {font-size: 12px;}
+    .hidden {display: table-cell;}
+}
+@media only screen and (min-width: 1000px){
+    .table {font-size: 16px;}
+    .hidden {display: table-cell;}
 }
