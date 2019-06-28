@@ -1,4 +1,4 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit, Output, ChangeDetectorRef} from '@angular/core';
 import {LoginService, User} from "../login.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService,
               private fb: FormBuilder,
-              private router: Router) { }
+              private router: Router,
+              private cdetector: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
           this.loginService.isAuth = true; 
           this.loginService.isAdminAuth = true; 
           this.router.navigate(['/']);
+          this.cdetector.markForCheck();
          })}, 500);
 
   }

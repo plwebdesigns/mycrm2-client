@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Client, ClientService } from "../client.service";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -18,9 +18,9 @@ export class ClientsComponent implements OnInit {
 
 
   constructor(
-      private clientService: ClientService,
-      private router: Router
-      ) { }
+    private clientService: ClientService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.getClients();
@@ -28,16 +28,23 @@ export class ClientsComponent implements OnInit {
 
   getClients() {
     const seq = this.clientService.getClients(this.page);
-    seq.subscribe((clients: any) => { this.clients  = clients.data });
-    setTimeout(() => {seq.subscribe((lx: any) => {this.links = lx.links},
+    seq.subscribe((clients: any) => { this.clients = clients.data });
+    setTimeout(() => {
+      seq.subscribe((lx: any) => { this.links = lx.links },
         err => console.warn('Observer error from getClients() ' + err),
-        () => this.isLoading = false)}, 200);
+        () => this.isLoading = false)
+    }, 200);
   }
 
-  searchClients(term: string) {
-    const subscription = this.clientService.searchClient(term);
+  sortClients(sortField) {
+    const sub = this.clientService.sortClients(sortField);
+    sub.subscribe((cx: any) => { this.clients = cx.data });
+  }
+
+  searchClients(term: string, by: string) {
+    const subscription = this.clientService.searchClient(term, by);
     subscription
-        .subscribe((clients: any) => { this.clients = clients.data });
+      .subscribe((clients: any) => { this.clients = clients.data });
   }
 
   pageForward() {
@@ -48,5 +55,11 @@ export class ClientsComponent implements OnInit {
     this.page = this.links['prev'];
     this.getClients();
   }
+
+
+  public set searchParam(v: string) {
+
+  }
+
 
 }

@@ -56,7 +56,7 @@
             <table class="table">
               <tr>
                 <td>Notes:
-                  <textarea class="textarea" cols="50" rows="5" name="notes"
+                  <textarea class="textarea is-large" rows="5" name="notes"
                             [(ngModel)]="client.notes"
                             [maxLength]="500"></textarea>
                 </td>
@@ -161,10 +161,36 @@
           </div>
         </div>
       </div>
+      <div class="tile is-vertical is-4">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child notification is-primary">
+            <h2 class="title is-3 has-text-centered">Documents</h2>
+            <table class="table is-narrow">
+              <tr *ngFor="let file of client.files">
+                <td>
+                  <strong>Name:</strong>
+                  {{file.name | slice:0:19}}
+                </td>
+              </tr>
+            </table>
+          </article>
+        </div>
+      </div>
     </div>
-  </form>
+  <form [formGroup]="uploadForm">
 
-</div>
+
+      <table>
+        <tr>
+          <td>
+            <input type="file" formControlName="fileInput" (change)="onChange()" id="fileInput">
+          </td>
+        </tr>
+      </table>
+    </form>  
+  
+
+
 <div class="modal" id="modal-success">
   <div class="modal-background"></div>
   <div class="modal-card">

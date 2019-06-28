@@ -1,29 +1,48 @@
+<br>
 
 <div class="field is-horizontal">
   <div class="field-label">
-    <input type="text" class="input is-primary" #searchTerm name="searchTerm"
-           placeholder="Search Last Name or ID" id="searchTerm" style="width: 250px">
+    <div class="select is-small is-primary">
+      <select #searchParam name="searchParam">
+        <option value="id">ID</option>
+        <option value="first_name">First Name</option>
+        <option value="last_name">Last Name</option>
+        <option value="city">City</option>
+      </select>
+    </div>
+  </div>
+  <div class="field-label">
+    <input type="text" class="input is-primary" #searchTerm name="searchTerm" placeholder="Search" id="searchTerm"
+      style="width: 250px; height: 28px;">
   </div>
   <div class="field-body">
-    <button type="button" class="button is-primary is-outlined" (click)="searchClients(searchTerm.value)">SEARCH</button>
+    <button type="button" class="button is-small is-primary is-outlined"
+      (click)="searchClients(searchTerm.value, searchParam.value)">SEARCH</button>
+  </div>
+  <div class="field-body">
+    <form>
+      <div class="select is-small is-primary">
+        <select #sortField (change)="sortClients(sortField.value)">
+          <option value="id">Sort</option>
+          <option value="first_name">First Name</option>
+          <option value="last_name">Last Name</option>
+        </select>
+      </div>
+    </form>
   </div>
 </div>
 
-<br>
-<div *ngIf="isLoading">
-  <h3 class="title is-3">Loading....</h3>
-</div>
 <table class="table clients-table" *ngIf="!isLoading">
-    <thead>
-      <th>ID</th>
-      <th>FIRST NAME</th>
-      <th>LAST NAME</th>
-      <th class="hidden">STATE</th>
-      <th class="hidden">DOB</th>
-      <th>PHONE 1</th>
-      <th>SSN</th>
-    </thead>
-    <tbody>
+  <thead>
+    <th>ID</th>
+    <th>FIRST NAME</th>
+    <th>LAST NAME</th>
+    <th class="hidden">STATE</th>
+    <th class="hidden">DOB</th>
+    <th>PHONE 1</th>
+    <th>SSN</th>
+  </thead>
+  <tbody>
     <tr *ngFor="let client of clients">
       <td class="clickable"><a routerLink="/clients/{{client.id}}">{{client.id}}</a> </td>
       <td class="clickable"><a routerLink="/clients/{{client.id}}">{{client.first_name | uppercase}}</a></td>
@@ -33,14 +52,14 @@
       <td>{{client.phone_1}}</td>
       <td>{{client.ssn}}</td>
     </tr>
-    </tbody>
-  </table>
+  </tbody>
+</table>
 <table class="table">
   <tr>
     <td>
       <nav class="pagination is-right" role="navigation" aria-label="pagination">
-        <a class="pagination-previous" (click)="pageBack()">Previous</a>
-        <a class="pagination-next" (click)="pageForward()">Next page</a>
+        <a class="pagination-previous is-small button" (click)="pageBack()">Previous</a>
+        <a class="pagination-next is-small button" (click)="pageForward()">Next page</a>
       </nav>
     </td>
   </tr>

@@ -22,42 +22,43 @@ export class Token implements HttpInterceptor{
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-            if (sessionStorage.getItem('token')) {
-                this.loginServ.isAuth = true;
-                const token = sessionStorage.getItem('token');
-                // Set authorization header to contain Bearer token
-                let headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-                headers = headers.append('Content-Type', 'Application/json');
+        if (sessionStorage.getItem('token')) {
+            this.loginServ.isAuth = true;
+            this.loginServ.isAdminAuth = true; //TODO: determine if admin user
+            const token = sessionStorage.getItem('token');
+            // Set authorization header to contain Bearer token
+            let headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+            // headers = headers.append('Content-Type', 'Application/json');
 
-                // If post req is really PUT, add header
-                if (req.headers.has('X-Http-Method-Override')) {
-                    const value = req.headers.get('X-HTTP-Method-Override');
-                    headers = headers.append('X-HTTP-Method-Override', value);
-                }
-                const customReq = req.clone({headers: headers});
-
-                return next.handle(customReq);
+            // If post req is really PUT, add header
+            if (req.headers.has('X-Http-Method-Override')) {
+                const value = req.headers.get('X-HTTP-Method-Override');
+                headers = headers.append('X-HTTP-Method-Override', value);
             }
-            else {
-                return next.handle(req).do((event: HttpEvent<any>) => {
-                        if (event instanceof HttpResponse) {
-                            // Do something with the response
-                            if (event.headers.has('Authorization')) {
-                                const token = event.headers.get('Authorization');
-                                sessionStorage.setItem('token', token);
-                            }
+            const customReq = req.clone({headers: headers});
 
-
+            return next.handle(customReq);
+        }
+        else {
+            return next.handle(req).do((event: HttpEvent<any>) => {
+                    if (event instanceof HttpResponse) {
+                        // Do something with the response
+                        if (event.headers.has('Authorization')) {
+                            const token = event.headers.get('Authorization');
+                            sessionStorage.setItem('token', token);
                         }
 
-                    },
-                    (err: any) => {
-                        if (err instanceof HttpErrorResponse) {
-                            if (err.status == 401 || err.status == 0) {
-                                return this.router.navigate(['/login']);
-                            }
+
+                    }
+
+                },
+                (err: any) => {
+                    if (err instanceof HttpErrorResponse) {
+                        if (err.status == 401 || err.status == 0) {
+                            return this.router.navigate(['/login']);
                         }
-                    });
-            }
+                    }
+                });
+        }
     }
 }

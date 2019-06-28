@@ -30,9 +30,5 @@ export class AppComponent {
     }
   }
 
-  smallScreen() {
-      document.getElementById('burger').classList.toggle('is-active');
-  }
-
 }
 
