@@ -9,80 +9,57 @@
               <tr>
                 <td>
                   Status:
-                  <input class="input" name="status"
-                         [ngModel]="model?.status"
-                         >
+                  <input class="input" name="status" [ngModel]="model?.status">
                 </td>
                 <td>
                   Transaction Date:
-                  <input class="input" name="transaction_date"
-                         [ngModel]="model?.transaction_date"
-                         
-                         >
+                  <input class="input" name="transaction_date" [ngModel]="model?.transaction_date">
                 </td>
                 <td>
                   Amount Client Received:
-                  <input class="input" name="amt_client_recvd"
-                         [ngModel]="model?.amt_client_recvd"
-                         required minlength="3"
-                         #amt_client_recvd="ngModel"
-                         >
-                  <div class="help is-danger" 
-                  *ngIf="amt_client_recvd.invalid && amt_client_recvd.touched">
+                  <input class="input" name="amt_client_recvd" [ngModel]="model?.amt_client_recvd" required
+                    minlength="3" #amt_client_recvd="ngModel">
+                  <div class="help is-danger" *ngIf="amt_client_recvd.invalid && amt_client_recvd.touched">
                     This field is required
                   </div>
                 </td>
-                
+
               </tr>
               <tr>
                 <td>
                   Payments Purchased:
-                  <input class="input" name="payments_purchased"
-                         [ngModel]="model?.payments_purchased"
-                         >
+                  <input class="input" name="payments_purchased" [ngModel]="model?.payments_purchased">
                 </td>
                 <td>
                   Payments Remaining:
-                  <input class="input" name="payments_remaining"
-                         [ngModel]="model?.payments_remaining"
-                         >
+                  <input class="input" name="payments_remaining" [ngModel]="model?.payments_remaining">
                 </td>
                 <td>
                   Profit:
-                  <input class="input" name="profit"
-                         [ngModel]="model?.profit"
-                         required minlength="3"
-                         #profit="ngModel"
-                         >
-                  <div class="help is-danger" 
-                      *ngIf="profit.invalid && profit.touched">
-                        This field is required
+                  <input class="input" name="profit" [ngModel]="model?.profit" required minlength="3" #profit="ngModel">
+                  <div class="help is-danger" *ngIf="profit.invalid && profit.touched">
+                    This field is required
                   </div>
                 </td>
               </tr>
               <tr>
                 <td>
                   Sales Person:
-                  <input class="input" name="sales_person"
-                         [ngModel]="model?.sales_person"
-                         >
+                  <input class="input" name="sales_person" [ngModel]="model?.sales_person">
                 </td>
                 <td>
                   County:
-                  <input class="input" name="county"
-                         [ngModel]="model?.county"
-                         >
+                  <input class="input" name="county" [ngModel]="model?.county">
                 </td>
                 <td>
                   Client ID:
-                  <input class="input" name="client_id"
-                         [ngModel]="model?.client_id"
-                         required
-                         #client_id="ngModel"
-                         >
-                  <div class="help is-danger" 
-                         *ngIf="client_id.invalid && client_id.touched">
-                           This field is required
+                  <input list="clients" class="input" required name="client_id" [ngModel]="model?.client_id"
+                    #client_id="ngModel">
+                  <datalist id="clients">
+                    <option *ngFor="let client of clients" [value]="client.id">
+                  </datalist>
+                  <div class="help is-danger" *ngIf="client_id.invalid && client_id.touched">
+                    This field is required
                   </div>
                 </td>
               </tr>
@@ -91,10 +68,8 @@
               <tr>
                 <td>
                   Notes:
-                  <textarea class="textarea" name="notes"
-                         [ngModel]="model?.notes"
-                         style="min-width: 500px; min-height: 200px"
-                         >
+                  <textarea class="textarea" name="notes" [ngModel]="model?.notes"
+                    style="min-width: 500px; min-height: 200px">
                   </textarea>
                 </td>
               </tr>
@@ -102,14 +77,9 @@
             <table class="table">
               <tr>
                 <td>
-                  <button
-                          style="margin-right: 4px"
-                          class="button is-link is-inverted"
-                          *ngIf="dealForm.valid"
-                          >Save
+                  <button style="margin-right: 4px" class="button is-link is-inverted" *ngIf="dealForm.valid">Save
                   </button>
-                  <button class="button is-link is-inverted" 
-                  (click)="goBack()">Back</button>
+                  <button class="button is-link is-inverted" (click)="goBack()">Back</button>
                 </td>
               </tr>
             </table>
@@ -121,17 +91,17 @@
 </div>
 <!-- Modal for successful add deal -->
 <div class="modal" id="modal-success">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title has-text-primary">SUCCESS</p>
-        <button class="delete" aria-label="close" (click)="toggleModal()"></button>
-      </header>
-      <section class="modal-card-body">
-        <p>Deal has been added successfully!</p>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button" (click)="toggleModal()">Close</button>
-      </footer>
-    </div>
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title has-text-primary">SUCCESS</p>
+      <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <p>Deal has been added successfully!</p>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" (click)="toggleModal()">Close</button>
+    </footer>
   </div>
+</div>

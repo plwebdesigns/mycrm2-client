@@ -96,6 +96,11 @@ export class ClientService {
       catchError(this.handleError)
     )
   }
+
+  //just get the clients, no page number
+  justClients(): Observable<Client> {
+    return this.http.get<Client>(this.API_URL + 'all');
+  }
   //Search clients using term
   searchClient(term: string, by: string): Observable<Client[]> {
     const myParams = { params: new HttpParams().set('search', term) };

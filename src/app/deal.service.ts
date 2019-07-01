@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
-import {Observable, throwError} from "rxjs";
-import {catchError} from "rxjs/operators";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 
 export interface Deal {
   id: number;
@@ -20,7 +20,7 @@ export interface Deal {
 
 let options = {
   headers: new HttpHeaders({
-    'Content-Type' : 'application/json'
+    'Content-Type': 'application/json'
   })
 };
 
@@ -32,7 +32,7 @@ let options = {
 export class DealService {
 
   constructor(
-      private http: HttpClient
+    private http: HttpClient
   ) { }
 
   private API_URL = 'https://longoapi.com/api/deals/';
@@ -44,14 +44,14 @@ export class DealService {
     } else {
       // The backend returned an unsuccessful response code.
       console.error(
-          `Backend returned code ${error.status}, ` +
-          `body was: ${error.error}`
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`
 
       );
     }
     // return an observable with a user-facing error message
     return throwError(
-        'Something bad happened; please try again later.');
+      'Something bad happened; please try again later.');
   };
 
   /* Function to retrieve all deals */
@@ -60,11 +60,11 @@ export class DealService {
   }
 
   /* Function to retrieve single deal */
-  showDeal(id:number): Observable<Deal> {
+  showDeal(id: number): Observable<Deal> {
     return this.http.get<Deal>(
-        this.API_URL + id,
-        options
-        );
+      this.API_URL + id,
+      options
+    );
   }
   /* Function for updating deal in deal-detail */
   updateDeal(id: number, deal): Observable<Deal> {
@@ -72,9 +72,9 @@ export class DealService {
     return this.http.post<Deal>(this.API_URL + id, deal, options);
   }
 
-  addDeal(deal): Observable<Deal>{
+  addDeal(deal): Observable<Deal> {
     return this.http.post<Deal>(this.API_URL, deal, options)
-        .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
-  
+
 }

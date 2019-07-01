@@ -1,7 +1,7 @@
-import {Component, OnInit, Output, ChangeDetectorRef} from '@angular/core';
-import {LoginService, User} from "../login.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
+import { Component, OnInit, Output, ChangeDetectorRef } from '@angular/core';
+import { LoginService, User } from "../login.service";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -16,9 +16,9 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private loginService: LoginService,
-              private fb: FormBuilder,
-              private router: Router,
-              private cdetector: ChangeDetectorRef) { }
+    private fb: FormBuilder,
+    private router: Router,
+    private cdetector: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -31,15 +31,20 @@ export class LoginComponent implements OnInit {
     user = this.loginForm.value;
     const subscription = this.loginService.login(user);
     subscription
-        .subscribe((ux: any) => { this.user = ux });
-    setTimeout(() => { subscription.subscribe((token: any) => { this.tk = token.token },
-        err => console.log('Error with login ' + err),
-        () => { 
-          this.loginService.isAuth = true; 
-          this.loginService.isAdminAuth = true; 
+      .subscribe((ux: any) => { this.user = ux });
+    setTimeout(() => {
+      subscription.subscribe((token: any) => { this.tk = token.token },
+        err => {
+          console.log('Error with login ' + err.message),
+          err.status == 403 ? alert('Incorrect username/password') : {}
+        },
+        () => {
+          this.loginService.isAuth = true;
+          this.loginService.isAdminAuth = true;
           this.router.navigate(['/']);
           this.cdetector.markForCheck();
-         })}, 500);
+        })
+    }, 500);
 
   }
 

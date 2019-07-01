@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ClientDetailComponent implements OnInit {
 
-  @Input() client: Client;
+  client: Client;
   uploadForm: FormGroup;
 
 
