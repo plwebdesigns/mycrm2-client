@@ -57,4 +57,20 @@ export class AdminService {
         catchError(this.handleError)
       );
   }
+
+  findEmployee(id: number): Observable<Employee> {
+    return this.http.get<Employee>(`${API_URL}/users/${id}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  updateEmployee(emp, id: number): Observable<Employee> {
+    httpOptions.headers = httpOptions.headers.append('X-HTTP-METHOD-OVERRIDE', 'PUT');
+    console.log(emp);
+    return this.http.post<Employee>(`${API_URL}users/${id}`, emp, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 }

@@ -10,26 +10,61 @@
       </li>
       <li>
         <a>
-          <span class="icon is-small"><i class="fas fa-music" aria-hidden="true"></i></span>
-          <span>Music</span>
+          Friends
         </a>
       </li>
       <li>
         <a>
-          <span class="icon is-small"><i class="fas fa-film" aria-hidden="true"></i></span>
-          <span>Videos</span>
+          Family
         </a>
       </li>
       <li>
         <a>
-          <span class="icon is-small"><i class="far fa-file-alt" aria-hidden="true"></i></span>
-          <span>Documents</span>
+          Discounts
         </a>
       </li>
     </ul>
   </div>
-  <table class="table" align="center">
-    <!-- <thead>
+  <!-- <form #employeeForm="ngForm">
+    <table class="table" align="center">
+      <thead>
+        <tr>
+          <th></th>
+          <th>ID</th>
+          <th>FIRST NAME</th>
+          <th>LAST NAME</th>
+          <th>DEPARTMENT</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees; let i = index" [attr.data-index]="i" id="tableRow">
+          <td><input #chkbox type="checkbox" name="chkbox" id="chkbox-{{i}}" (change)="toggleDisabled(chkbox)"></td>
+          <td><input type="text" class="input is-small is-primary myclass-{{i}}" [ngModel]="employee.id" name="id"
+              readonly></td>
+          <td><input type="text" class="input is-small is-primary myclass-{{i}}"
+              [ngModel]="employee.first_name | uppercase" (ngModelChange)="employee.first_name=$event" name="first_name"
+              readonly>
+          </td>
+          <td><input type="text" class="input is-small is-primary myclass-{{i}}"
+              [ngModel]="employee.last_name | uppercase" (ngModelChange)="employee.last_name=$event" name="last_name"
+              readonly>
+          </td>
+          <td><input type="text" class="input is-small is-primary myclass-{{i}}"
+              [ngModel]="employee.department | uppercase" (ngModelChange)="employee.department=$event" name="department"
+              readonly>
+          </td>
+          <td><input type="text" class="input is-small is-primary myclass-{{i}}" [ngModel]="employee.status | uppercase"
+              (ngModelChange)="employee.status=$event" name="status" readonly>
+          </td>
+          <td><button hidden id="btn-save-{{i}}" class="is-small is-primary"
+              (click)="updateEmployee(employee, employee.id)">Save</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </form> -->
+  <table class="table">
+    <thead>
       <tr>
         <th></th>
         <th>ID</th>
@@ -38,15 +73,16 @@
         <th>DEPARTMENT</th>
         <th>STATUS</th>
       </tr>
-    </thead> -->
+    </thead>
     <tbody>
-      <tr *ngFor="let employee of employees">
-        <td><input type="checkbox"></td>
+      <tr *ngFor="let employee of employees; let i = index" [attr.data-index]="i">
+        <td><input #chkbox type="checkbox" name="chkbox" id="chkbox-{{i}}" (change)="toggleDisabled(chkbox)"></td>
         <td>{{employee.id}}</td>
-        <td>{{employee.first_name}}</td>
-        <td>{{employee.last_name}}</td>
-        <td>{{employee.department}}</td>
-        <td>{{employee.status}}</td>
+        <td>{{employee.first_name | uppercase}}</td>
+        <td>{{employee.last_name | uppercase}}</td>
+        <td>{{employee.department | uppercase}}</td>
+        <td>{{employee.status | uppercase}}</td>
+        <td><button hidden id="btn-edit-{{i}}" class="is-small is-primary">Edit</button></td>
       </tr>
     </tbody>
   </table>

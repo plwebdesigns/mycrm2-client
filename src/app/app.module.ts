@@ -18,6 +18,7 @@ import { DealDetailComponent } from './deals/deal-detail/deal-detail.component';
 import { DealsComponent } from './deals/deals/deals.component';
 import { DealAddComponent } from './deals/deal-add/deal-add.component';
 import { EmployeesComponent } from './admin/components/employees/employees.component';
+import { EmployeeDetailComponent } from './admin/components/employee-detail/employee-detail.component';
 
 
 
@@ -36,6 +37,7 @@ import { EmployeesComponent } from './admin/components/employees/employees.compo
     DealsComponent,
     DealAddComponent,
     EmployeesComponent,
+    EmployeeDetailComponent,
   ],
   imports: [
     BrowserModule,
